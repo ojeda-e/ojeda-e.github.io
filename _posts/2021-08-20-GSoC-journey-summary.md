@@ -7,6 +7,7 @@ tags:
     - Biological Membranes
     - Lipid Bilayers
 layout: post
+permalink: /blog/GSoC-journey-summary/
 ---
 
 _A summary of the main contributions to MembraneCurvature during my GSoC journey._

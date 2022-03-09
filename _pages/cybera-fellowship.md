@@ -9,7 +9,7 @@ hide: true
 
 [<span class="icon fa-box"></span> &nbsp; Project Description](https://www.cybera.ca/ds-fellowship-profiles/#2021HockeyAI)
 <br>
-[<span class="icon fa-pencil-alt"></span> &nbsp; Blog Post](/blog/cybera-fellowship/) -->
+[<span class="icon fa-pencil-alt"></span> &nbsp; Blog Post](/blog/cybera-fellowship/)
 
 ### Technologies
 - Docker

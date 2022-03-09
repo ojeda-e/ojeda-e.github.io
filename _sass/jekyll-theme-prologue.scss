@@ -129,15 +129,15 @@
 
 	a {
 		text-decoration: none;
-		color: inherit;
+		color: #666;
 		border-bottom: dotted 2px;
 		// rgba(128, 128, 128, 0.5);
 		@include vendor('transition', ('color 0.35s ease-in-out', 'border-bottom-color 0.35s ease-in-out'));
 		outline: 0;
 
 		&:hover {
-			color: #469090;
-			border-bottom-color: #28a0a0;
+			color: rgba(29, 127, 134, 0.979);
+			border-bottom-color: rgba(29, 127, 134, 0.979);
 		}
 	}
 
@@ -635,6 +635,7 @@
 			ul {
 				list-style: none;
 				margin-bottom: 0;
+				
 				hr {
 					margin: auto 1em;
 				}
@@ -667,7 +668,7 @@
 						&.active {
 							background: rgba(0, 0, 0, 0.15);
 							box-shadow: inset 0 0 0.25em 0 rgba(0, 0, 0, 0.125);
-							color: #fff;
+							color: rgb(171, 171, 171);
 	
 							span::before {
 								color: #e27689;
@@ -743,10 +744,10 @@
 			  -webkit-box-pack: justify;
 			  -ms-flex-pack: justify;
 			  justify-content: center;
-			  color: #4c4c4d;
+			  color: #666666;
 			  text-decoration: underline;
 			  border-bottom: 1px solid #fff;
-			  font-size: 20pt;
+			  font-size: 15pt;
 			
 			&:hover {
 				color: rgba(29, 127, 134, 0.979);
@@ -780,6 +781,8 @@
 				font-size: 20pt;
 				padding-bottom: 0em;
 				color: rgb(7, 84, 87);
+				padding-left: 5%;
+				padding-right: 5%;
 			
 			  
 				+ .list__item .archive__item-title {
