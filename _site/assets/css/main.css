@@ -1215,7 +1215,7 @@ input, textarea, select {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
-  color: #979797;
+  color: #272727;
   line-height: 1.5em;
   font-size: 1.5em; }
 
@@ -1244,12 +1244,22 @@ strong, b {
   font-weight: 300;
   color: black; }
 
-em, i {
-  font-style: italic; }
+i {
+  font-style: italic;
+  color: #fff; }
+
+em {
+  font-style: bold;
+  color: #a0a0a0;
+  border-bottom: dotted 2px;
+  outline: 0; }
+  em:hover {
+    color: #9faa59;
+    border-bottom-color: #edf6b5; }
 
 a {
   text-decoration: none;
-  color: #666;
+  color: #868686;
   border-bottom: dotted 2px;
   -moz-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
   -webkit-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;

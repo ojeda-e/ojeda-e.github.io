@@ -123,18 +123,33 @@
 		color: rgb(0, 0, 0);
 	}
 
-	em, i {
+	i {
 		font-style: italic;
+		color: #fff;
+		}
+	// top links to projects
+	em {
+		font-style: bold;
+		color: rgb(160, 160, 160);
+		border-bottom: dotted 2px;
+		// rgba(128, 128, 128, 0.5);
+		// @include vendor('transition', ('color 0.35s ease-in-out', 'border-bottom-color 0.35s ease-in-out'));
+		outline: 0;
+		// hyperlinks color
+		&:hover {
+			color: rgb(159, 170, 89);
+			border-bottom-color: rgb(237, 246, 181);
+		}
 	}
 
 	a {
 		text-decoration: none;
-		color: #666;
+		color: rgb(134, 134, 134);
 		border-bottom: dotted 2px;
 		// rgba(128, 128, 128, 0.5);
 		@include vendor('transition', ('color 0.35s ease-in-out', 'border-bottom-color 0.35s ease-in-out'));
 		outline: 0;
-
+		// hyperlinks color
 		&:hover {
 			color: rgba(29, 127, 134, 0.979);
 			border-bottom-color: rgba(29, 127, 134, 0.979);
@@ -510,7 +525,7 @@
 			padding: 1.5em 0 0.75em 0;
 			color:rgb(110, 110, 110);
 			font-size: 12pt;
-
+			
 			> :last-child {
 				margin-bottom: 0;
 				font-size: 12pt;

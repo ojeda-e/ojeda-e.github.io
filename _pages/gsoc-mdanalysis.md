@@ -7,11 +7,13 @@ permalink: /portfolio/software-development/gsoc-mdanalysis/
 hide: true
 ---
 
-[<span class="icon fa-box"></span> &nbsp; Project Description](https://summerofcode.withgoogle.com/archive/2021/projects/5740558735114240)
+<a href='https://summerofcode.withgoogle.com/archive/2021/projects/5740558735114240'><span class="icon fa-box"></span> &nbsp; Project description</a>
 <br>
-[<span class="icon fa-pencil-alt"></span> &nbsp; Blog Post](/blog/2021/08/20/GSoC-journey-summary.html)
+<a href='/blog/GSoC-journey-summary/'> <span class="icon fa-pencil-alt"></span> &nbsp; Blog Post</a>
 <br>
-[<span class="icon-b fa-github"></span> &nbsp; GitHub](https://github.com/MDAnalysis/membrane-curvature)
+<a href='https://github.com/MDAnalysis/membrane-curvature'> <span class="icon-b fa-github"></span> &nbsp; GitHub</a>
+
+
 
 ### Technologies
 - Numpy / SciPy / PyTest
