@@ -1,0 +1,78 @@
+---
+layout: archive
+---
+
+
+  
+<!-- Header -->
+<div id="header">
+  <div class="top">
+    {%- include logo.html -%}
+    {%- include nav.html section_items=include.scrolly_nav -%}
+  </div>
+  <div class="tags">
+    {%- include nav_tags.html -%}
+  </div>
+  <div class="bottom">
+    <div class="mini bottom">
+    <center>
+      Let's connect!
+    </center>
+    </div>   
+    {%- include social_icons.html -%}
+  </div>
+</div>
+
+
+{{ content }}
+
+{% assign tags_max = 0 %}
+{% for tag in site.tags %}
+  {% if tag[1].size > tags_max %}
+    {% assign tags_max = tag[1].size %}
+  {% endif %}
+{% endfor %}
+
+
+
+
+<!-- Tags index  -->
+<center>
+  <h2> <i class="fa fa-tags"></i> Posts by Tag</h2>
+</center>
+<br>
+<center>
+<ul class="taxonomy__index">
+  {% for i in (1..tags_max) reversed %}
+    {% for tag in site.tags %}
+      {% if tag[1].size == i %}
+        <li>
+          <a href="#{{ tag[0] | slugify }}"> 
+          {{ tag[0] }} <span class="taxonomy__count">&nbsp; [{{ i }}]</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</ul>  
+</center>
+
+
+<!-- Entries list -->
+
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+{% for i in (1..tags_max) reversed %}
+  {% for tag in site.tags %}
+    {% if tag[1].size == i %}
+      <section id="{{ tag[0] | slugify | downcase }}" class="taxonomy__section">
+        <span class="archive__subtitle"> &nbsp; <i class="fa fa-tags"></i> &nbsp;{{ tag[0] }}</span>
+        <div class="entries-{{ entries_layout }}">
+          {% for post in tag.last %}
+            {% include archive-single.html type=entries_layout %}
+          {% endfor %}
+        </div>
+        <a href="#page-title" class="back-to-top"> {{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+      </section>
+    {% endif %}
+  {% endfor %}
+{% endfor %}

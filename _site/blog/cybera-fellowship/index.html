@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://localhost:4000/blog/cybera-fellowship/" /><!-- Title, description, author --><title>Cybera Data Science Fellowship: Building a Markov Decission Process from scratch | Le Miroir - Stories to share</title>
+  <meta name="description" content="Cybera Data Science Fellowship: Building a Markov Decission Process from scratch | Le Miroir - Stories to share" />
+  <meta name="author" content="Estefania Barreto-Ojeda" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cybera Data Science Fellowship: Building a Markov Decission Process from scratch | Le Miroir - Stories to share" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/images/bio-photo.png" />
+  <meta property="og:url" content="http://localhost:4000/blog/cybera-fellowship/" />
+  <meta property="og:site_name" content="Le Miroir" />
+  <meta property="og:description" content="Cybera Data Science Fellowship: Building a Markov Decission Process from scratch | Le Miroir - Stories to share" />
+  
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/assets/js/skel.min.js" defer></script>
+  <script src="/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/assets/js/main.js" defer></script>
+
+</head><body><!-- extract content TOC -->
+
+<!-- <ul class="inline_toc" id="my_toc"><li><a href="#definition">Definition</a></li><li><a href="#next-steps">Next steps</a></li></ul>
+ --><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://localhost:4000/" id="home-link">
+    <span class="image avatar48"><img src="/assets/images/bio-photo.png" alt="Avatar of Estefania Barreto-Ojeda" /></span>
+    <h1 id="title">Le Miroir</h1>
+    <p>Stories to share</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="http://localhost:4000/" id="home-link">
+            <span class="icon fa-home">home</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom">
+    <div class="mini bottom">
+    <center>
+      Let's connect!
+    </center>
+    </div><!-- Social Icons -->
+<ul class="icons"><li><a href="https://twitter.com/ebojeda" class="icon-b fa-twitter"><span class="label">Twitter</span></a></li><li><a href="https://www.linkedin.com/in/estefania-ojeda/" class="icon-b fa-linkedin-in"><span class="label">LinkedIn</span></a></li><li><a href="https://github.com/ojeda-e" class="icon-b fa-github"><span class="label">GitHub</span></a></li><li><a href="mailto:estefania@ojeda-e.com" class="icon fa-envelope"><span class="label">Email</span></a></li></ul>
+
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-five">
+	  <div class="container">
+			<header>
+				<h2>Cybera Data Science Fellowship: Building a Markov Decission Process from scratch</h2>
+				<p>04 October 2021</p>
+			</header><p>Markov Decision Processes (MDP) are a type of Reinforcement Learning (RL) problem, where there is an agent (<em>Ai</em>) who interacts with an environment. The environment, in return, provides rewards. Based on this reward, the agent changes its state, and therefore new decisions taken by the agent will be influenced by them. The following diagram summarizes a MDP applicable to Hockey AI:</p>
+
+<p>Let’s see each one of the variables involved in the MDP model with more detail:</p>
+<ul>
+  <li>Agent: (Player)
+Agents interact with the environment by actions (𝐴A) and receive rewards based on them. At each step 𝑡t the agent:</li>
+  <li>Receives observation 𝑂𝑡Ot.</li>
+  <li>Receives (immediate) scalar reward 𝑅𝑡Rt.</li>
+  <li>Executes action 𝐴𝑡At.</li>
+  <li>Environment: (League)</li>
+  <li>Receives action 𝐴𝑡At</li>
+  <li>Emits observation 𝑂𝑡+1Ot+1</li>
+  <li>Generates reward 𝑅𝑡+1Rt+1</li>
+  <li>Reward: (Stipend, Scholarship, Salary)</li>
+</ul>
+
+<h3 id="definition">Definition</h3>
+<p>An MDP (Markov Decision Process) is defined as a triple 𝑀=(𝑆,𝐴,𝑃0)M=(S,A,P0) with</p>
+<ul>
+  <li>A countable not-empty set of states 𝑠∈𝑆s∈S,</li>
+  <li>a countable not-empty set of actions 𝑎∈𝐴a∈A,</li>
+  <li>and a transition probability kernel.</li>
+</ul>
+
+<p>Calculating transition probability
+As mentioned before, the class TransitionMatrix, available in the ../scripts/features directory, allow us to calculate the probability of a player to move from one league to another.
+[15]:</p>
+
+<p>To calculate the transition probability matrix, we first need to order our the data. In this way we guarantee that the calculated probability corresponds to the transition betwwn previous_league and next_league. Since our model will consider age, league name and league level only, we can simply transform these features from the transition DataFrame.</p>
+
+<p>Reward function
+For our reward function, we considered the following ranking for league levels:</p>
+
+<p>FigureN includes all my derivable during the Cybera Data Science fellowship:</p>
+
+<p>we propose an exponential reward function when transitioning to an upper league, with a penalty if the league is in the bottom of the list, among the possible leagues in that level.
+The ranking of the leagues by level goes according to the ordered lists:</p>
+
+<h3 id="next-steps">Next steps</h3>
+<ul>
+  <li>
+    <p>Continue building the engine
+The availability of libraries for reinforcement learning is currently very limited. The model here presented required a brand new engine to calculate probabilities. Although here we present an initial approach, it needs further improvement, in particular, to tune the reward function considering a more complex set of parameters.</p>
+  </li>
+  <li>
+    <p>Probabilities
+To improve the calculated probabilities, a next step is to calculate the transition probabilities as a function of the location of the player (feature placeOfBirth from the EliteProspects API). That would allow us to identify possible team targets that the player could focus on. After that, the probability could be further calculated by adding player statistics.
+Another point to consider in order to improve the current model is by tuning the reward function. This can be achieved by assessing the probability of the player getting/holding a scholarship, as a function of the league name, league level, player stats, and team. Finally, a function that takes into account the cost of joining a certain league could also improve the current RL - MDP model.</p>
+  </li>
+</ul>
+
+</div>
+	</article>
+	<a href="" class="back-to-top">Back to Top &uarr;</a>
+</div>
+<!-- Footer -->
+<div id="footer">
+  
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>&copy; 2022&nbsp;Estefania Barreto-Ojeda&nbsp; All rights reserved.</li>
+     <br>
+    Made with love by Estefania
+  </ul>
+  
+</div></body>
+</html>

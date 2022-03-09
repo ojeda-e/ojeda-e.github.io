@@ -1,0 +1,17 @@
+---
+layout: default
+---
+{%- include header.html -%}
+
+<!-- Main -->
+<div id="main">
+	<!-- Page -->
+	<article class="shade-two">
+	  <div class="container">
+			<header>
+			<h2 id={{- page.title|slugify -}}> {{- page.title -}}</h2>
+			</header>
+	    {{- content -}}
+	  </div>
+	</article>
+</div>

@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://localhost:4000/blog/2021/06/22/The_project.html" /><!-- Title, description, author --><title>The project | Le Miroir - Stories to share</title>
+  <meta name="description" content="The project | Le Miroir - Stories to share" />
+  <meta name="author" content="Estefania Barreto-Ojeda" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="The project | Le Miroir - Stories to share" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/images/bio-photo.png" />
+  <meta property="og:url" content="http://localhost:4000/blog/2021/06/22/The_project.html" />
+  <meta property="og:site_name" content="Le Miroir" />
+  <meta property="og:description" content="The project | Le Miroir - Stories to share" />
+  
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/assets/js/skel.min.js" defer></script>
+  <script src="/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/assets/js/main.js" defer></script>
+
+</head><body><!-- extract content TOC -->
+
+<!-- 
+ --><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://localhost:4000/" id="home-link">
+    <span class="image avatar48"><img src="/assets/images/bio-photo.png" alt="Avatar of Estefania Barreto-Ojeda" /></span>
+    <h1 id="title">Le Miroir</h1>
+    <p>Stories to share</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="http://localhost:4000/" id="home-link">
+            <span class="icon fa-home">home</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom">
+    <div class="mini bottom">
+    <center>
+      Let's connect!
+    </center>
+    </div><!-- Social Icons -->
+<ul class="icons"><li><a href="https://twitter.com/ebojeda" class="icon-b fa-twitter"><span class="label">Twitter</span></a></li><li><a href="https://www.linkedin.com/in/estefania-ojeda/" class="icon-b fa-linkedin-in"><span class="label">LinkedIn</span></a></li><li><a href="https://github.com/ojeda-e" class="icon-b fa-github"><span class="label">GitHub</span></a></li><li><a href="mailto:estefania@ojeda-e.com" class="icon fa-envelope"><span class="label">Email</span></a></li></ul>
+
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-five">
+	  <div class="container">
+			<header>
+				<h2>The project</h2>
+				<p>22 June 2021</p>
+			</header><p>A brief introduction to my GSoC project!</p>
+
+<hr />
+
+<p>It’s been two weeks since I started my Google Summer of Code (<a href="https://summerofcode.withgoogle.com">GSoC</a>) journey and
+before moving forward, I would like to take a moment to share details of <a href="https://summerofcode.withgoogle.com/projects/#5098282306502656">my_project</a>, 
+the motivations behind it, as well as my expectations. The main goal is
+to integrate a membrane curvature analysis tool into <a href="https://github.com/MDAnalysis">MDAnalysis</a>. This tool will
+enable users to calculate the membrane curvature, in terms of mean and Gaussian
+curvature, of biological membranes.</p>
+
+<p><img src="/assets/images/PM_Membrane_EBO.png" alt="membrane" width="1000" /></p>
+
+<p>Fundamentally, biological membranes are functional and structural assemblies
+composed of a lipid bilayer matrix and associated proteins. Despite this
+simplification, biological membranes are diverse and highly complex. Their lipid
+composition varies according to their physical properties and functional roles.
+Additionally, their asymmetrical lipid composition by leaflet also contributes
+to maintaining specific mechanisms. Hence, biological membranes are not a pure
+architecture trick played by the cell. Instead, they actively drive many
+processes involving membrane remodeling and membrane trafficking.</p>
+
+<ul>
+  <li>How does <code class="language-plaintext highlighter-rouge">membrane_curvature</code> work? (A glimpse)</li>
+</ul>
+
+<p>To calculate membrane curvature, we first need a surface. Given the nature of
+biological membranes, we can use phospholipids -core elements of lipid
+bilayers-, as elements of reference to derive the surfaces associated with each
+leaflet. For simplicity, we can use the lipid head groups to define the surface.
+Once we think of leaflets as surfaces defined by lipid headgroups, we can
+calculate the mean and Gaussian curvature.</p>
+
+<p>Mean curvature is an extrinsic property of a surface. Gaussian curvature, on the
+other hand, is intrinsic. That is to say, mean curvature depends on the
+coordinate space in which the surface is embedded, while the Gaussian curvature
+can be calculated within the surface itself without any reference to a larger
+space. Mean and Gaussian curvature together give information about how curved
+and how elastic the membrane is. In the figure below, given an arbitrary surface
+(left panel), the corresponding plots of mean (middle) and Gaussian curvature
+(right panel) are shown.</p>
+
+<p><img src="/assets/images/Surface_H_K.png" alt="curvature" width="1000" /></p>
+
+<ul>
+  <li>What will this project unlock? What will the membrane curvature tool enable?</li>
+</ul>
+
+<p>If you are in the MD simulations field and you work with any protein-membrane or
+membrane-only system, this tool will help your research work! Findings reported
+in literature suggest that there is an interplay between membrane curvature and
+protein sorting [<a href="https://pubs.acs.org/doi/10.1021/acscentsci.0c00419">1</a>] [<a href="https://doi.org/10.1038/ncomms9728">2</a>] [<a href="https://doi.org/10.1039/D0SM01573C">3</a>] and/or protein function [<a href="https://doi.org/10.1242/jcs.114454">4</a>][<a href="https://elifesciences.org/articles/50576">5</a>]. Although
+this complex interaction may be determined by the specific features of the
+membrane (lipid type, lipid composition) or the protein (protein shape, type of
+residues facing the membrane, protein conformation), curvature of biological
+membranes can provide valuable insight when addressing a research problem.</p>
+
+<ul>
+  <li>When and where will I find the <code class="language-plaintext highlighter-rouge">membrane_curvature</code> tool?</li>
+</ul>
+
+<p>The membrane curvature tool is expected to be part of the <a href="https://github.com/MDAnalysis">MDAnalysis</a>
+analysis package in future versions. A sample of how it is
+expected to work in the future looks like this</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import MDAnalysis as mda
+from MDAnalysis.analysis.curvature import Curvature
+
+atom_file = &lt;your coordinates file from MD simulations&gt;
+traj_file = &lt;your trajectory from MD simulations&gt;
+
+u = mda.Universe(atom_file, traj_file)
+
+surface = u.select_atoms("&lt;atoms of reference&gt;")
+
+curvature = Curvature(surface).run()
+
+mean = curvature.mean_curvature()
+gaussian = curvature.gaussian_curvature()
+</code></pre></div></div>
+
+<ul>
+  <li>What are the limitations to calculate membrane curvature?</li>
+</ul>
+
+<p>When calculating membrane curvature in MD simulations, there are two main
+limitations.</p>
+
+<p>The first one is sampling. To properly sample a decent range of curvatures in
+MD, the required simulation times are very large, reaching dozens or hundreds of
+microseconds. Such time scales are expensive and sometimes only affordable by
+state-of-the-art research groups.</p>
+
+<p>The second limitation is the lack of user-friendly, actively-maintained and
+well-documented tools to analyze membrane curvature. Although some GitHub repos
+exist, not all of them are maintained and/or documented, some lack source code,
+benchmarks are non-existent, or they have not been ported to the modern Python 3
+environment.</p>
+
+<p>This was, in fact, one of my strongest motivations to contribute a membrane
+curvature tool under the <a href="https://github.com/MDAnalysis">MDAnalysis</a> umbrella. With <a href="https://github.com/MDAnalysis/membrane-curvature">membrane_curvature</a>,
+students and researchers will be able to calculate mean and gaussian curvature
+of biological membranes using one of the most popular, easy-to-use, and
+actively-maintained packages for analysis of MD simulations.</p>
+
+<p>I started developing this tool as part of my Ph.D. and I would like to share it
+with the wider MD community. I am convinced that by sharing our knowledge and
+open-sourcing our algorithms and tools, science will move forward at a faster
+pace.</p>
+
+<p>Share the code and help the world!</p>
+
+<hr />
+
+<p><img align="left" width="100" src="/assets/images/MDlogo.png" alt="MDAnalysis_logo" /></p>
+
+<p>And while you are here, did you know that MDAnalysis is one of the most popular
+Python libraries to analyze MD simulations? MDAnalysis core developers actively
+work to make it better with every release. 
+Please consider <a href="https://numfocus.org/donate-to-mdanalysis">donating</a> today.</p>
+
+<hr />
+
+<p>References:</p>
+
+<ul>
+  <li>[<a href="https://pubs.acs.org/doi/10.1021/acscentsci.0c00419">1</a>] ACS Cent. Sci. 2020, 6, 7, 1159–1168.</li>
+  <li>[<a href="https://doi.org/10.1038/ncomms9728">2</a>] Nat Commun 6, 8728 (2015).</li>
+  <li>[<a href="https://doi.org/10.1039/D0SM01573C">3</a>] Soft Matter, 2021,17, 4254-4265.</li>
+  <li>[<a href="https://doi.org/10.1242/jcs.114454">4</a>] J Cell Sci (2015) 128 (6): 1065–1070.</li>
+  <li>[<a href="https://elifesciences.org/articles/50576">5</a>] eLife 2019;8:e50576.</li>
+</ul>
+
+<hr />
+
+</div>
+	</article>
+	<a href="" class="back-to-top">Back to Top &uarr;</a>
+</div>
+<!-- Footer -->
+<div id="footer">
+  
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>&copy; 2022&nbsp;Estefania Barreto-Ojeda&nbsp; All rights reserved.</li>
+     <br>
+    Made with love by Estefania
+  </ul>
+  
+</div></body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://localhost:4000/blog/2021/08/08/Considerations-curvature-MD-simulations-PartII.html" /><!-- Title, description, author --><title>Membrane Curvature from MD Simulations: Considerations [Part II] | Le Miroir - Stories to share</title>
+  <meta name="description" content="Membrane Curvature from MD Simulations: Considerations [Part II] | Le Miroir - Stories to share" />
+  <meta name="author" content="Estefania Barreto-Ojeda" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Membrane Curvature from MD Simulations: Considerations [Part II] | Le Miroir - Stories to share" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/images/bio-photo.png" />
+  <meta property="og:url" content="http://localhost:4000/blog/2021/08/08/Considerations-curvature-MD-simulations-PartII.html" />
+  <meta property="og:site_name" content="Le Miroir" />
+  <meta property="og:description" content="Membrane Curvature from MD Simulations: Considerations [Part II] | Le Miroir - Stories to share" />
+  
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/assets/js/skel.min.js" defer></script>
+  <script src="/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/assets/js/main.js" defer></script>
+
+</head><body><!-- extract content TOC -->
+
+<!-- <ul class="inline_toc" id="my_toc"><li><a href="#considerations-part-ii">Considerations (Part II)</a><ul><li><a href="#option-1-additional-trajectory-processing">Option 1: Additional trajectory processing</a></li><li><a href="#option-2-on-the-fly-transformations">Option 2: On-the-fly transformations</a></li></ul></li></ul>
+ --><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://localhost:4000/" id="home-link">
+    <span class="image avatar48"><img src="/assets/images/bio-photo.png" alt="Avatar of Estefania Barreto-Ojeda" /></span>
+    <h1 id="title">Le Miroir</h1>
+    <p>Stories to share</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="http://localhost:4000/" id="home-link">
+            <span class="icon fa-home">home</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom">
+    <div class="mini bottom">
+    <center>
+      Let's connect!
+    </center>
+    </div><!-- Social Icons -->
+<ul class="icons"><li><a href="https://twitter.com/ebojeda" class="icon-b fa-twitter"><span class="label">Twitter</span></a></li><li><a href="https://www.linkedin.com/in/estefania-ojeda/" class="icon-b fa-linkedin-in"><span class="label">LinkedIn</span></a></li><li><a href="https://github.com/ojeda-e" class="icon-b fa-github"><span class="label">GitHub</span></a></li><li><a href="mailto:estefania@ojeda-e.com" class="icon fa-envelope"><span class="label">Email</span></a></li></ul>
+
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-five">
+	  <div class="container">
+			<header>
+				<h2>Membrane Curvature from MD Simulations: Considerations [Part II]</h2>
+				<p>08 August 2021</p>
+			</header><p>Considerations to calculate membrane curvature from MD simulations with no position restraints.</p>
+
+<hr />
+
+<p>In the <a href="/blog/2021/07/22/Considerations-curvature-MD-simulations-PartI.html">previous blog post</a>, 
+we summarized the most common Molecular Dynamics setups, and highlighted some points to calculate
+membrane curvature in two types of simulation systems:</p>
+<ul>
+  <li>Membrane only (1.1), and</li>
+  <li>Membrane-protein systems, with positions restraints applied on the protein (1.2.1).</li>
+</ul>
+
+<p>In the second part of this series, I will discuss some points to consider 
+to calculate membrane curvature from MD simulations in setups where position
+restraints are not imposed on proteins.</p>
+
+<p>Position restraints (hereinafter referred as <em>posres</em>) is an algorithm intended
+to keep particles at a fixed reference position in the simulation box. 
+Although the use of <em>posres</em> in MD is system-dependent and it responds
+to particular research interests, application of <em>posres</em> is commonly used 
+avoid significant rearrangement of particles. Some of the most common
+uses are:</p>
+
+<ul>
+  <li>applied to solvent particles to equilibrate around the protein without
+affecting the protein structure.</li>
+  <li>applied to the proteins to keep them fixed in a given position in the membrane.</li>
+  <li>applied to lipid headgrops to restrain the oscillation of bilayers to avoid
+membrane fluctuations.</li>
+</ul>
+
+<p>Given that experimental evidence supports a link between protein diffusion and
+membrane curvature, and applying <em>posres</em> on the protein prevents protein
+diffusion, in some cases, it may be a good idea to set MD simulations up with no
+<em>posres</em> applied on the protein. 
+And, of course, no <em>posres</em> on lipid head groups either :-)</p>
+
+<h2 id="considerations-part-ii">Considerations (Part II)</h2>
+
+<p>In MD simulations with no <em>posres</em>, we allow both oscillation of the lipid
+headgroups as well as protein difussion. Under these settings, the protein is
+allowed to freely diffuse in the plane of the membrane, and it may subjected to
+translations and rotations. An example of rotational and translational
+changes that a protein undergoes while it diffuses is shown in the sequence
+below:</p>
+
+<center><img src="/assets/images/sequence_protein_axes.png" alt="seq_protein" width="450" />
+</center>
+<p><br />
+Since the scientific question behind calculating membrane curvature in
+membrane-protein systems is what is the <em>membrane curvature induced by the protein</em>, the
+trajectory obtained as a result of our MD simulations requires some additional
+processing. In this way we guarantee that the calculated curvature is
+relative to the protein, and therefore, can be associated to the curvature
+induced by the protein.</p>
+
+<p>In the sections below, I am going to dicuss two possible solutions to calculate
+membrane curvature in systems with membrane-protein systems with no <em>posres</em>
+applied.</p>
+
+<center><img src="/assets/images/solutions_posres.png" alt="solution_posres" width="650" /></center>
+
+<h3 id="option-1-additional-trajectory-processing">Option 1: Additional trajectory processing</h3>
+
+<p>Since the trajectories obtained from MD simulations where proteins dynamics
+display translational and rotational diffusion need a special treatment, we
+fundamentally need to perform two main operations. First, we need to center and
+orient the protein in the center of the simulation box. Then, we need to rotate
+and translate the lipids, with the protein in the center of the simulation box
+as a reference.</p>
+
+<p>We can process the trajectory using <em>Gromacs</em> with the commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gmx trjconv <span class="nt">-pbc</span> whole <span class="nt">-ur</span> compact <span class="nt">-c</span> 
+gmx trjconv <span class="nt">-fit</span> rot+transxy
+</code></pre></div></div>
+
+<p>With this 2-step trajectory processing, we rotate and translate the lipids of
+the membrane, while keeping the protein centered in the simulation box.</p>
+
+<p>For illustration purposes, I made this short video that shows the difference
+between the raw trajectory and the processed fit trajectory from the top view of
+the simulation box. The protein is show in surface representation, and the lipid
+head groups are shown in spheres.</p>
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/A8_WBIyV7zI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"> </iframe>
+</center>
+<p><br /></p>
+
+<p>The snapshots from the video allow us to identify that in the processed
+trajectory, the structure of the protein remains centered and fixed.</p>
+<center>
+<img src="/assets/images/top_view.png" alt="top_view" width="850" />
+</center>
+<p>It is worth mentioning that when the trajectory is processed in <em>Gromacs</em>, the
+<code class="language-plaintext highlighter-rouge">-pbc whole</code> option applies coordinate wrapping, and therefore,
+<code class="language-plaintext highlighter-rouge">MembraneCurvature</code> should be run with <code class="language-plaintext highlighter-rouge">wrap=False</code> when passing a processed
+trajectory.</p>
+
+<p>Under these consideration, the processed trajectory can be used to calculate
+membrane curvature in our 
+<a href="https://github.com/MDAnalysis/membrane-curvature">MembraneCurvature MDAnalysis tool</a>. 
+To visualize the results, a final clipping would enhance our curvature plot.</p>
+
+<p><img src="/assets/images/solution1_summary.png" alt="solution1" width="850" /></p>
+
+<h3 id="option-2-on-the-fly-transformations">Option 2: On-the-fly transformations</h3>
+
+<p>A potential alternative to calculate membrane curvature without relying on third parties to 
+process trajectories is possible by applying 
+<a href="https://userguide.mdanalysis.org/stable/trajectories/transformations.html">MDAnalysis on-the-fly transformations</a>.</p>
+
+<p>With this approach we rotate and translate the lipids in every frame
+of the trajectory, avoiding further trajectory processing by the user and the
+calculation of curvature would fully rely on <a href="https://github.com/MDAnalysis">MDAnalysis</a>.</p>
+
+<p>So far, MDAnalysis offers two out of the three functionalities to perform
+all on-the-fly-transformations: <code class="language-plaintext highlighter-rouge">center_in_box</code> and <code class="language-plaintext highlighter-rouge">fit_rot_trans</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">center_in_box</code> transformation reaccommodates all the atoms in the simulation
+box, allowing a given AtomGroup to be centered in the unit cell. On the other
+hand, the <code class="language-plaintext highlighter-rouge">fit_rot_trans</code> transformation enables us to fit the trajectory
+using an AtomGroup as reference. The functionality of <code class="language-plaintext highlighter-rouge">fit_rot_trans</code> is wide
+enough that we can perfom fit on the plane of the membrane if needed. For
+example,if the fitting is performed on the <code class="language-plaintext highlighter-rouge">plane=xy</code> then the transformation
+will behave as <code class="language-plaintext highlighter-rouge">-fit rotxy+transxy</code> from <em>Gromacs</em>.</p>
+
+<p>A snippet that includes these two transformations looks like:</p>
+
+<pre><code class="language-Python3">import MDAnalysis as mda
+from MDAnalysis import transformations
+from membrane_curvature.base import MembraneCurvature
+from membrane_curvature.tests.datafiles import XTC_MEMBPROT_FIT, GRO_MEMBPROT_FIT
+
+universe = mda.Universe(GRO_MEMBPROT_FIT, XTC_MEMBPROT_FIT)
+
+protein = universe.select_atoms("resid 1-1800")
+reference_fit = universe.select_atoms("resid 1-1800 and name BB")
+
+workflow_fit = (transformations.center_in_box(protein, center='mass'),
+                transformations.fit_rot_trans(protein, reference_fit, plane=''xy))
+
+u.trajectory.add_transformations(*workflow_fit)
+
+</code></pre>
+
+<p><a href="https://www.mdanalysis.org/2020/03/09/on-the-fly-transformations/">This blog post</a>
+has more on-the-fly transformations examples to check out!</p>
+
+<p>Currently, the <code class="language-plaintext highlighter-rouge">compact</code> option that puts all atoms at the closest distance from
+the center of the box is not available in MDAnalysis, so we need extra steps
+which may include calculation of rotational and translational matrices applied
+to the surface. We are exploring this and other possible approaches to make of
+<a href="https://github.com/MDAnalysis/membrane-curvature">MembraneCurvature</a> a fully-functional MDAnalysis tool!</p>
+
+<hr />
+
+</div>
+	</article>
+	<a href="" class="back-to-top">Back to Top &uarr;</a>
+</div>
+<!-- Footer -->
+<div id="footer">
+  
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>&copy; 2022&nbsp;Estefania Barreto-Ojeda&nbsp; All rights reserved.</li>
+     <br>
+    Made with love by Estefania
+  </ul>
+  
+</div></body>
+</html>

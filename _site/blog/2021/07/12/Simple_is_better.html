@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://localhost:4000/blog/2021/07/12/Simple_is_better.html" /><!-- Title, description, author --><title>Simple is better | Le Miroir - Stories to share</title>
+  <meta name="description" content="Simple is better | Le Miroir - Stories to share" />
+  <meta name="author" content="Estefania Barreto-Ojeda" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Simple is better | Le Miroir - Stories to share" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/images/bio-photo.png" />
+  <meta property="og:url" content="http://localhost:4000/blog/2021/07/12/Simple_is_better.html" />
+  <meta property="og:site_name" content="Le Miroir" />
+  <meta property="og:description" content="Simple is better | Le Miroir - Stories to share" />
+  
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/assets/js/skel.min.js" defer></script>
+  <script src="/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/assets/js/main.js" defer></script>
+
+</head><body><!-- extract content TOC -->
+
+<!-- <ul class="inline_toc" id="my_toc"><li><a href="#clean-and-modular-code">Clean and Modular Code</a></li><li><a href="#names-of-variables">Names of Variables</a></li><li><a href="#functions">Functions</a></li><li><a href="#style-guide">Style Guide</a></li></ul>
+ --><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://localhost:4000/" id="home-link">
+    <span class="image avatar48"><img src="/assets/images/bio-photo.png" alt="Avatar of Estefania Barreto-Ojeda" /></span>
+    <h1 id="title">Le Miroir</h1>
+    <p>Stories to share</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="http://localhost:4000/" id="home-link">
+            <span class="icon fa-home">home</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom">
+    <div class="mini bottom">
+    <center>
+      Let's connect!
+    </center>
+    </div><!-- Social Icons -->
+<ul class="icons"><li><a href="https://twitter.com/ebojeda" class="icon-b fa-twitter"><span class="label">Twitter</span></a></li><li><a href="https://www.linkedin.com/in/estefania-ojeda/" class="icon-b fa-linkedin-in"><span class="label">LinkedIn</span></a></li><li><a href="https://github.com/ojeda-e" class="icon-b fa-github"><span class="label">GitHub</span></a></li><li><a href="mailto:estefania@ojeda-e.com" class="icon fa-envelope"><span class="label">Email</span></a></li></ul>
+
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-five">
+	  <div class="container">
+			<header>
+				<h2>Simple is better</h2>
+				<p>12 July 2021</p>
+			</header><p>What clean and modular code means, its importance, and some examples of best
+practices.</p>
+
+<hr />
+
+<h2 id="clean-and-modular-code">Clean and Modular Code</h2>
+
+<p>The main take home message of my last two weeks working on my <a href="https://summerofcode.withgoogle.com/projects/#5098282306502656">GSoC_project</a>
+can be summarized with a golden rule: write clean and modular code.</p>
+
+<p class="notice--warning" style="text-align: center;"><strong>CLEAN:</strong> Readable, simple, and concise. <br /><br />
+<code class="language-plaintext highlighter-rouge">Clean code == Simple and clear != Redundant</code></p>
+
+<p>Clean code is a characteristic of production quality code that is crucial for collaboration
+and maintainability in software development. Make it easy for the team to
+understand and maintain.</p>
+
+<p class="notice--success" style="text-align: center;"><strong>MODULAR:</strong> Logically broken up into functions and modules. <br /><br />
+<code class="language-plaintext highlighter-rouge">Modular code == Broken into functions and modules =! Entangled spaghetti</code></p>
+
+<p>Modularity makes your code more organized, efficient, and reusable. This is something
+that may not be evident in your first experiences working on teams, but in the
+long run, it will pay off!</p>
+
+<p>The importance of having clean and modular code can be summarized in three
+points. First, modular code means better readability because each function will
+be focused on one single purpose. Second, by having modules with a single
+purpose and function, we can reuse code more easily. And third, since it is easy
+to read, and to reuse, collaborating with members of your teams gets easier and
+faster, speeding up development time.</p>
+
+<p>Other tips that I found useful to consider while working at the <a href="https://summerofcode.withgoogle.com">GSoC</a> are summarized below.</p>
+
+<h2 id="names-of-variables">Names of Variables</h2>
+
+<p>Provide descriptive names of variables. Long names are not necessarily
+meaningful names. A good rule of thumb is:</p>
+
+<p class="notice" style="text-align: center;"><strong>Descriptive variables + clear variable names –&gt; no comments</strong> ✅ <br />
+<strong>Arbitrary variables + unclear variable names –&gt; needs comments</strong> ❌</p>
+
+<ul>
+  <li>
+    <p>Avoid single letter names. Exceptions can be made based on the readers of
+your code when iterables are involved, but in general try to assign the best name to variables.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = [15, 30, 45]        # single letter ❌
+
+angles = [15, 30, 45]   # descriptive ✅ 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Because python is untyped, specify the type of variable in the name if possible.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>is_in_list = True                 # Boolean Variable
+
+angle_list = [15, 30, 35]         # List
+    
+dict_lipid_types = {'POPC': 15, 
+                    'POPE': 10, 
+                    'CHOL':5 }    # Dictionary
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Prefer list comprehensions over explicit lists when you can create a list from an iterable.</p>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>angle_list = [15, 30, 45, 60, 75, 90]    # explicit list  ❌
+
+angle_list = [i*15 for i in range(1,7)]  # list comprehension  ✅ 
+</code></pre></div></div>
+
+<ul>
+  <li>Concise variable names can make code easier and more effective to read.</li>
+</ul>
+
+<p>Concise names are easy to read and names may be even intuitive or common for
+other members of your team.</p>
+
+<p>For example, when working with lipid bilayers, it is very common to identify
+atoms by lipid type or by atom name. An effective way to ierate over items of
+<code class="language-plaintext highlighter-rouge">dict_lipids_ecoli</code> would be</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dict_lipids_ecoli = {'PE': 34, 
+                     'PG': 33, 
+                     'CL': 33 }   
+
+for lipid_type, number in dict_lipids_ecoli.items():
+    print(lipid_type, number)
+
+</code></pre></div></div>
+
+<h2 id="functions">Functions</h2>
+<p>Each function should be focused on ONE thing. Avoid unnecessary
+side effects and keep it focused on one single task.</p>
+
+<ul>
+  <li>A <em>code smell</em> is a function with more than 3 arguments. In many cases, using
+3 arguments may be more effective, but a good rule of thumb to keep in mind is:</li>
+</ul>
+
+<p class="notice" style="text-align: center;"><strong>If the function has too many parameters, consider breaking into smaller functions</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function_name(param_1, ..., param_10)    # too many! ❌
+
+function_name(param_1, ..., param_5)     # a lot, but better ⚠️
+
+function_name(param_1, param_2, param_3) # best ✅ 
+</code></pre></div></div>
+
+<h2 id="style-guide">Style Guide</h2>
+<p>PEP8 provides guidelines on how to write code in Python. For example:</p>
+
+<ul>
+  <li>Use whitespace properly, and use consistent indentation (4 spaces / indent).</li>
+  <li>Line length should be shorter than 79 characters to keeping your code human readable.</li>
+</ul>
+
+<p>Here an example of how select atoms using the <a href="https://github.com/MDAnalysis">MDAnalysis</a> package following PEP8 guidelines</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import MDAnalysis as mda
+from MDAnalysis.tests.datafiles import PSF, DCD
+
+u = mda.Universe(PSF, DCD)
+
+# Line with 117 characters long ---&gt; too long ❌
+no_protein_backbone_by_residue = u.select_atoms("resname ALA or resname GLY and not (backbone or name CB)").residues
+
+# Same selection but using a 70-character long  --&gt;  ✅ good
+protein_resids_noBB =  u.select_atoms("resname ALA GLY and not \
+                                     (backbone or name CB)").residues
+</code></pre></div></div>
+
+<p>You can find more examples on code layout using PEP8 in <a href="https://www.python.org/dev/peps/pep-0008/?#code-lay-out">here</a>. For options to
+install Autopep8, this <a href="/blog/2021/07/12/Autopep8.html">post</a> may help. More
+useful cases for Atom selection using <a href="https://github.com/MDAnalysis">MDAnalysis</a> are available in this
+<a href="https://www.mdanalysis.org/MDAnalysisTutorial/basics.html">tutorial</a>.</p>
+
+<p>In summary, the advantages of writing clean and modular code, in addition to
+best practices, will take you one step closer to a more readable code, which
+will be easier for your team to understand and maintain. Because simple code is
+better.</p>
+
+</div>
+	</article>
+	<a href="" class="back-to-top">Back to Top &uarr;</a>
+</div>
+<!-- Footer -->
+<div id="footer">
+  
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>&copy; 2022&nbsp;Estefania Barreto-Ojeda&nbsp; All rights reserved.</li>
+     <br>
+    Made with love by Estefania
+  </ul>
+  
+</div></body>
+</html>

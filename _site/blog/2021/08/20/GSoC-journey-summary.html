@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://localhost:4000/blog/2021/08/20/GSoC-journey-summary.html" /><!-- Title, description, author --><title>GSoC Report: Curvature for MDA Universes | Le Miroir - Stories to share</title>
+  <meta name="description" content="GSoC Report: Curvature for MDA Universes | Le Miroir - Stories to share" />
+  <meta name="author" content="Estefania Barreto-Ojeda" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="GSoC Report: Curvature for MDA Universes | Le Miroir - Stories to share" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/images/bio-photo.png" />
+  <meta property="og:url" content="http://localhost:4000/blog/2021/08/20/GSoC-journey-summary.html" />
+  <meta property="og:site_name" content="Le Miroir" />
+  <meta property="og:description" content="GSoC Report: Curvature for MDA Universes | Le Miroir - Stories to share" />
+  
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/assets/js/skel.min.js" defer></script>
+  <script src="/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/assets/js/main.js" defer></script>
+
+</head><body><!-- extract content TOC -->
+
+<!-- <ul class="inline_toc" id="my_toc"><li><a href="#why-membrane-curvature">Why Membrane Curvature?</a></li><li><a href="#contributions">Contributions</a></li><li><a href="#core-functions-34-40-44">Core functions (#34, #40, #44)</a><ul><li><a href="#analysis-base-43-48">Analysis Base (#43, #48)</a></li><li><a href="#documentation-57-62-64-69">Documentation (#57, #62, #64, #69)</a></li></ul></li><li><a href="#how-can-i-use-it">How can I use it?</a><ul><li><a href="#running-membranecurvature">Running MembraneCurvature</a></li><li><a href="#plots">Plots</a></li></ul></li><li><a href="#in-progress">In progress</a></li><li><a href="#whats-next">What’s next?</a></li><li><a href="#conclusions">Conclusions</a></li></ul>
+ --><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://localhost:4000/" id="home-link">
+    <span class="image avatar48"><img src="/assets/images/bio-photo.png" alt="Avatar of Estefania Barreto-Ojeda" /></span>
+    <h1 id="title">Le Miroir</h1>
+    <p>Stories to share</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="http://localhost:4000/" id="home-link">
+            <span class="icon fa-home">home</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom">
+    <div class="mini bottom">
+    <center>
+      Let's connect!
+    </center>
+    </div><!-- Social Icons -->
+<ul class="icons"><li><a href="https://twitter.com/ebojeda" class="icon-b fa-twitter"><span class="label">Twitter</span></a></li><li><a href="https://www.linkedin.com/in/estefania-ojeda/" class="icon-b fa-linkedin-in"><span class="label">LinkedIn</span></a></li><li><a href="https://github.com/ojeda-e" class="icon-b fa-github"><span class="label">GitHub</span></a></li><li><a href="mailto:estefania@ojeda-e.com" class="icon fa-envelope"><span class="label">Email</span></a></li></ul>
+
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-five">
+	  <div class="container">
+			<header>
+				<h2>GSoC Report: Curvature for MDA Universes</h2>
+				<p>20 August 2021</p>
+			</header><p><em>A summary of the main contributions to MembraneCurvature during my GSoC journey.</em></p>
+
+<p><br />
+The main goal of my <a href="https://summerofcode.withgoogle.com/projects/#5098282306502656">GSoC project</a>
+was to develop a tool to calculate membrane curvature
+from MD simulations using <a href="https://www.mdanalysis.org/">MDAnalysis</a>. We
+aimed to have the following features in the membrane curvature tool:</p>
+
+<ul>
+  <li>Surfaces derived from an <code class="language-plaintext highlighter-rouge">AtomGroup</code> of reference.</li>
+  <li>Calculation of mean and Gaussian curvature.</li>
+  <li>Implement multiframe and averaged-over-frames analysis.</li>
+  <li>Plug-and-play with visualization libraries to obtain 2D curvature profiles.</li>
+  <li>Data visualization made easy.</li>
+</ul>
+
+<p style="text-align:center;">
+<img src="/assets/images/patches.png" class="center" />
+</p>
+
+<h2 id="why-membrane-curvature">Why Membrane Curvature?</h2>
+<p>In the wide range of tools that are available to analyze Molecular Dynamics (MD)
+simulations, user-friendly, actively-maintained, and well-documented tools to
+calculate membrane curvature are still difficult to find. I was motivated to
+share a tool to calculate membrane curvature that I initially developed as part
+of my PhD at the <a href="https://ucalgary.ca/biocomputing/home">Biocomputing Group</a>.
+Membrane curvature is a phenomenon that can be investigated via MD simulations, and
+I had an interest to share this tool with the wider MD community.</p>
+
+<h2 id="contributions">Contributions</h2>
+<p>Keeping in mind the goals and motivations behind my GSoC project,
+I would like to hightlight three areas of contributions that were key to the
+MembraneCurvature MDAnalysis tool: <a href="#core-functions-34-40-44">Core functions</a>,
+<a href="#analysis-base-43-48">AnalysisBase</a>, and <a href="#documentation-57-62-64-69">Documentation</a>.</p>
+
+<h2 id="core-functions-34-40-44">Core functions (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/34">#34</a>, <a href="https://github.com/MDAnalysis/membrane-curvature/pull/40">#40</a>, <a href="https://github.com/MDAnalysis/membrane-curvature/pull/44">#44</a>)</h2>
+<p>The initial version of the code (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/9">#9</a>) contained functions to map elements from the <code class="language-plaintext highlighter-rouge">AtomGroup</code> 
+of reference into a grid of dimensions defined by the simulation box. <a href="https://github.com/MDAnalysis/membrane-curvature/pull/9">#9</a> also included the functions to
+calculate mean and Gaussian curvature. After refactoring (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/34">#34</a>), the core functions 
+of MembraneCurvature were cleaned and tuned up (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/40">#40</a> and <a href="https://github.com/MDAnalysis/membrane-curvature/pull/44">#44</a>). Our core functions are:</p>
+
+<ul>
+  <li><a href="https://github.com/MDAnalysis/membrane-curvature/blob/4bb851efdeaaeb894b7c354fd019f5f6a97079de/membrane_curvature/surface.py#L22"><code class="language-plaintext highlighter-rouge">derive_surface</code></a>, <a href="https://github.com/MDAnalysis/membrane-curvature/blob/4bb851efdeaaeb894b7c354fd019f5f6a97079de/membrane_curvature/surface.py#L52"><code class="language-plaintext highlighter-rouge">get_z_surface</code></a>, <a href="https://github.com/MDAnalysis/membrane-curvature/blob/4bb851efdeaaeb894b7c354fd019f5f6a97079de/membrane_curvature/surface.py#L108"><code class="language-plaintext highlighter-rouge">normalize_grid</code></a> (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/40">#40</a>)</li>
+  <li><a href="https://github.com/MDAnalysis/membrane-curvature/blob/4bb851efdeaaeb894b7c354fd019f5f6a97079de/membrane_curvature/curvature.py#L67"><code class="language-plaintext highlighter-rouge">mean_curvature</code></a>, <a href="https://github.com/MDAnalysis/membrane-curvature/blob/4bb851efdeaaeb894b7c354fd019f5f6a97079de/membrane_curvature/curvature.py#L39"><code class="language-plaintext highlighter-rouge">gaussian_curvature</code></a>. (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/44">#44</a>)</li>
+</ul>
+
+<p>These functions are our bricks to build the MembraneCurvature AnalysisBase.</p>
+
+<h3 id="analysis-base-43-48">Analysis Base (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/43">#43</a>, <a href="https://github.com/MDAnalysis/membrane-curvature/pull/48">#48</a>)</h3>
+<p>The analysis in MembraneCurvature used the <a href="https://docs.mdanalysis.org/1.1.1/documentation_pages/analysis/base.html">MDAnalysis AnalysisBase</a> building block, from where we obtained the basic structure to run multilframe analysis.</p>
+
+<p>In the <a href="https://github.com/MDAnalysis/membrane-curvature/blob/4bb851efdeaaeb894b7c354fd019f5f6a97079de/membrane_curvature/base.py#L27">MembraneCurvature subclass</a> of AnalysisBase,
+we define the initial arrays for surface, mean, and Gaussian curvature in the
+<a href="https://github.com/MDAnalysis/membrane-curvature/blob/4bb851efdeaaeb894b7c354fd019f5f6a97079de/membrane_curvature/base.py#L158"><code class="language-plaintext highlighter-rouge">_prepare()</code></a> method.  In <a href="https://github.com/MDAnalysis/membrane-curvature/blob/4bb851efdeaaeb894b7c354fd019f5f6a97079de/membrane_curvature/base.py#L170"><code class="language-plaintext highlighter-rouge">_single_frame()</code></a>, AnalysisBase runs the
+membrane curvature analysis in every frame, and populates the arrays previously
+defined in <code class="language-plaintext highlighter-rouge">_prepare()</code>. In <a href="https://github.com/MDAnalysis/membrane-curvature/blob/4bb851efdeaaeb894b7c354fd019f5f6a97079de/membrane_curvature/base.py#L183"><code class="language-plaintext highlighter-rouge">_conclude</code></a>, we compute the average over frames for
+the surface and curvature arrays.</p>
+
+<p>The derived surface, and calculated arrays of mean and Gaussian curvature values
+are stored in the <code class="language-plaintext highlighter-rouge">Results</code> attribute. This makes AnalysisBase the most
+fundamental part of the MembraneCurvature analysis. With the MembraneCurvature
+<a href="https://docs.mdanalysis.org/2.0.0-dev0/documentation_pages/analysis/base.html?highlight=base#analysis-building-blocks-mdanalysis-analysis-base">AnalysisBase</a>, we can perform multiframe and average-over-frame analysis.</p>
+
+<p>We also added <a href="https://github.com/MDAnalysis/membrane-curvature/blob/4bb851efdeaaeb894b7c354fd019f5f6a97079de/membrane_curvature/base.py#L172">coordinate
+wrapping</a>
+to our Analysis base, which enables users to run MembraneCurvature with all
+atoms in the primary unit cell <a href="https://github.com/MDAnalysis/membrane-curvature/pull/48">#48</a>. Having an option to wrap coordinates is
+particularly useful when we want to calculate curvature with elements in the
+<code class="language-plaintext highlighter-rouge">AtomGroup</code> that may fall outside the boundaries of the grid.</p>
+
+<p>With PR <a href="https://github.com/MDAnalysis/membrane-curvature/pull/48">#48</a>, we also achieved a significant milestone: reaching <a href="https://app.codecov.io/gh/MDAnalysis/membrane-curvature/compare/48/diff#D2">100% code
+coverage</a>
+in MembraneCurvature. 100% coverage means that every line of
+code included was executed by <a href="https://docs.pytest.org/en/6.2.x/">pytest</a>, our test suite, to check that the code works as it
+should.</p>
+
+<h3 id="documentation-57-62-64-69">Documentation (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/57">#57</a>, <a href="https://github.com/MDAnalysis/membrane-curvature/pull/62">#62</a>, <a href="https://github.com/MDAnalysis/membrane-curvature/pull/64">#64</a>, <a href="https://github.com/MDAnalysis/membrane-curvature/pull/69">#69</a>)</h3>
+<p>One of the strongest motivations to contribute an <a href="https://www.mdanalysis.org/">MDAnalysis</a> 
+curvature tool was to provide a well-documented package 
+to analyze membrane curvature from MD simulations.</p>
+
+<p>The membrane curvature tool includes solid documentation that can be found in the
+following pages:</p>
+
+<ul>
+  <li><a href="https://membrane-curvature.readthedocs.io/en/latest/api/membrane_curvature.html">API documentation</a> (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/57">#57</a>)</li>
+  <li><a href="https://membrane-curvature.readthedocs.io/en/latest/source/pages/Algorithm.html">Algorithm</a>, <a href="https://membrane-curvature.readthedocs.io/en/latest/source/pages/Usage.html">Usage</a> and <a href="https://membrane-curvature.readthedocs.io/en/latest/source/pages/Visualization.html">Visualization</a> pages (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/62">#62</a>)</li>
+  <li><a href="https://membrane-curvature.readthedocs.io/en/latest/source/pages/Tutorials.html">Tutorials</a> (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/64">#64</a>, <a href="https://github.com/MDAnalysis/membrane-curvature/pull/69">#69</a>)</li>
+</ul>
+
+<p>We included two different tutorials: One where we use Membrane Curvature to
+derive surfaces and calculate curvature of a membrane-only system (<a href="https://github.com/MDAnalysis/membrane-curvature/pull/64">#64</a>), and
+another for a membrane-protein system(<a href="https://github.com/MDAnalysis/membrane-curvature/pull/69">#69</a>).</p>
+
+<h2 id="how-can-i-use-it">How can I use it?</h2>
+<p>Membrane-curvature uses <a href="https://www.mdanalysis.org/">MDAnalysis</a> under the hood. We can install Membrane-curvature via <code class="language-plaintext highlighter-rouge">pip</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install membrane-curvature
+</code></pre></div></div>
+
+<h3 id="running-membranecurvature">Running MembraneCurvature</h3>
+<p>MembraneCurvature was designed to be user friendly. No counterintuitive commands,
+and no long lines of code. With MembraneCurvature you can calculate curvature in less
+than 10 lines of code! The snippet below illustrates how easy it gets to extract mean
+and Gaussian curvature from our MD simulations:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre><span class="kn">import</span> <span class="nn">MDAnalysis</span> <span class="k">as</span> <span class="n">mda</span>
+<span class="kn">from</span> <span class="nn">membrane_curvature.base</span> <span class="kn">import</span> <span class="n">MembraneCurvature</span>
+<span class="kn">from</span> <span class="nn">membrane_curvature.tests.datafiles</span> <span class="kn">import</span> <span class="n">MEMB_GRO</span><span class="p">,</span> <span class="n">MEMB_XTC</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">mda</span><span class="p">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">MEMB_GRO</span><span class="p">,</span> <span class="n">MEMB_XTC</span><span class="p">)</span>
+
+<span class="n">curv_upper_leaflet</span> <span class="o">=</span> <span class="n">MembraneCurvature</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="s">"resid 103-1023 and name PO4"</span><span class="p">,</span> 
+                                            <span class="n">n_x_bins</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">n_y_bins</span><span class="o">=</span><span class="mi">12</span><span class="p">).</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">curv_lower_leaflet</span> <span class="o">=</span> <span class="n">MembraneCurvature</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="s">'resid 1024-2046 and name PO4'</span><span class="p">,</span> 
+                                            <span class="n">n_x_bins</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">n_y_bins</span><span class="o">=</span><span class="mi">12</span><span class="p">).</span><span class="n">run</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>In the example above, we use two files included in the MembraneCurvature tests:
+<code class="language-plaintext highlighter-rouge">MEMB_GRO</code> and <code class="language-plaintext highlighter-rouge">XTC_GRO</code>, which comprises a membrane of lipid composition 
+<span style="color:#92ad6a">POPC:POPE</span><span style="color:grey">:CHOL</span>, in a 
+<span style="color:#92ad6a">5:4</span><span style="color:grey">:1</span> ratio:</p>
+
+<p style="text-align:center;">
+<img src="/assets/images/movie.gif" width="800" height="400" class="center" /> 
+</p>
+
+<p>We use the selection <span style="color:#92ad6a"><code class="language-plaintext highlighter-rouge">"resid 103-1023 and name PO4"</code></span> as an
+<code class="language-plaintext highlighter-rouge">AtomGroup</code> of reference to derive the surface associated to the upper leaflet.
+Similarly, we derive the surface from the lower leaflet with the <code class="language-plaintext highlighter-rouge">AtomGroup</code>
+defined by the selection <span style="color:#92ad6a"><code class="language-plaintext highlighter-rouge">"resid 1024-2046 and name PO4"</code></span> . In this example,
+<code class="language-plaintext highlighter-rouge">PO4</code> is the name of the phospholipid head groups.</p>
+
+<p>After running MembraneCurvature, the calculated values of the derived surface
+(<em>H</em>), and Gaussian curvature (<em>K</em>) are stored in the <code class="language-plaintext highlighter-rouge">_results()</code> attribute. We
+can easily extract the average results with:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">surf_upper</span> <span class="o">=</span> <span class="n">curv_upper_leaflet</span><span class="p">.</span><span class="n">results</span><span class="p">.</span><span class="n">average_z_surface</span>
+<span class="n">mean_upper</span> <span class="o">=</span> <span class="n">curv_upper_leaflet</span><span class="p">.</span><span class="n">results</span><span class="p">.</span><span class="n">average_mean</span>
+<span class="n">gauss_upper</span> <span class="o">=</span> <span class="n">curv_upper_leaflet</span><span class="p">.</span><span class="n">results</span><span class="p">.</span><span class="n">average_gaussian</span></code></pre></figure>
+
+<h3 id="plots">Plots</h3>
+<p>To visualize the results from <code class="language-plaintext highlighter-rouge">MembraneCurvature.run()</code>, we can use <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.contourf.html">contourf</a> from Matplotlib. 
+For example, here is the plot of the averaged results for the upper leaflet using contours:</p>
+
+<p><img src="/assets/images/results.png" alt="results" width="1050" /></p>
+
+<p>In biological membranes of higher complexity, lipid composition between leaflets
+is commonly assymetric. With the results obtained from
+MembraneCurvature, direct comparison between leaflets can be easily performed. The following snippet generates a
+side-by-side plot of the mean curvature results between leaflets with its respective colormap:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">mean_lower</span> <span class="o">=</span> <span class="n">curv_upper_leaflet</span><span class="p">.</span><span class="n">results</span><span class="p">.</span><span class="n">average_mean</span>
+<span class="n">curvatures</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean_lower</span><span class="p">,</span> <span class="n">mean_upper</span><span class="p">]</span> 
+<span class="n">leaflets</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Lower'</span><span class="p">,</span> <span class="s">'Upper'</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">mc</span><span class="p">,</span> <span class="n">lf</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">((</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">),</span> <span class="n">curvatures</span><span class="p">,</span> <span class="n">leaflets</span><span class="p">):</span>
+    <span class="n">mc</span> <span class="o">=</span> <span class="n">ndimage</span><span class="p">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'wrap'</span><span class="p">)</span>
+    <span class="n">bound</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">mc</span><span class="p">)),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">mc</span><span class="p">)))</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'bwr'</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="n">bound</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=+</span><span class="n">bound</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s">'equal'</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'{} Leaflet'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">lf</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">mc</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">mc</span><span class="p">)],</span> <span class="n">orientation</span><span class="o">=</span><span class="s">'vertical'</span><span class="p">,</span> 
+                    <span class="n">ax</span><span class="o">=</span><span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">],</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">cbar</span><span class="p">.</span><span class="n">ax</span><span class="p">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">cbar</span><span class="p">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">'$H$(nm$^{-1})$'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> </code></pre></figure>
+
+<p><img src="/assets/images/mycontours.png" alt="contours" width="1050" /></p>
+
+<p>Mean curvature plots provide information about the “shape” of the surface, 
+which in this example is derived from phospholipids.
+Positive mean curvature indicates peaks, negative mean curvature is associated
+with valleys. Null mean curvature means flat curvature (white coloured). In the
+example considered here, the contour plot of mean curvature indicates:</p>
+
+<ul>
+  <li>
+    <p>Coupling between leaflets. Regions of positive curvature (red coloured) in the
+lower leaflet match those in the upper leaflet. The same is observed for
+regions of negative curvature (blue coloured).</p>
+  </li>
+  <li>
+    <p>A central region of positive curvature. For both upper and lower leaflet,
+there is a central region of positive mean curvature (red coloured) along the
+<em>y</em> axis, while regions of negative curvature (blue coloured) are localized towards
+the corner of the membrane, in particular bottom left and upper right corners.</p>
+  </li>
+</ul>
+
+<h2 id="in-progress">In progress</h2>
+<p>Currently, we are working on implementing interpolation as an option for the
+user <a href="https://github.com/MDAnalysis/membrane-curvature/pull/52">#52</a>.</p>
+
+<p>In some situations, when selecting a very high number of bins in the grid, or
+when having regions of the grid with low sampling we may find regions of undefined values.
+For example, think of a membrane-protein system, where the bins occupied by the protein won’t be
+populated by lipids, and therefore, will have a region of undefined values in
+the grid. Such undefined values spread in the array during the calculation of
+curvature, which may result in meaningless output.</p>
+
+<p>By adding an optional interpolation, we will be able to patch up undefined values 
+in bins inside the embedded element (i.e. protein). With this improvement, calculation
+of membrane curvature won’t be hamstrung by the presence of undefined values in the grid.</p>
+
+<h2 id="whats-next">What’s next?</h2>
+<p>There is always room for improvement, and MembraneCurvature is not an exception.
+One of the main limitations of the current version of MembraneCurvature is the
+inability to calculate curvature in systems like vesicles, capsids, or micelles.
+This would definitely be a nice improvement for a future release of
+MembraneCurvature!</p>
+
+<p><img src="/assets/images/vesicles.png" alt="vesicles" /></p>
+
+<p>We acknowledge that scientific research would benefit from a
+tool to calculate membrane curvature in these types of systems, so we are
+considering possible approaches to include more topologies in MembraneCurvature!</p>
+
+<h2 id="conclusions">Conclusions</h2>
+<p>Participating in GSoC with MDAnalysis has been a unique experience. I had the
+opportunity to learn best practices in software development mentored by a group
+of incredibly talented people:
+<a href="https://github.com/lilyminium">@lilywang</a>,
+<a href="https://github.com/IAlibay">@IAlibay</a>, 
+<a href="https://github.com/fiona-naughton">@fiona-naughton</a>, and
+<a href="https://github.com/orbeckst">@orbeckst</a>. I also would like to thank
+<a href="https://github.com/richardjgowers">@richardjgowers</a> and 
+<a href="https://github.com/tylerjereddy">@tylerjereddy</a> from the MDA community, who participated in our
+discussions and provided valuable insights. 
+<br /> Thanks for all your valuable lessons.</p>
+
+<p>MembraneCurvature has launched! 🚀 <br />
+<a href="https://github.com/MDAnalysis/membrane-curvature" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">MembraneCurvature</span></a></p>
+
+<hr />
+
+</div>
+	</article>
+	<a href="" class="back-to-top">Back to Top &uarr;</a>
+</div>
+<!-- Footer -->
+<div id="footer">
+  
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>&copy; 2022&nbsp;Estefania Barreto-Ojeda&nbsp; All rights reserved.</li>
+     <br>
+    Made with love by Estefania
+  </ul>
+  
+</div></body>
+</html>

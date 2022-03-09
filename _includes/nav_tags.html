@@ -1,0 +1,14 @@
+
+<nav id="nav_tags">
+    <ul>
+    {%- for _tag in site.tags -%}
+        {%- assign _title = _tag | first -%}
+        {%- assign _slug = _tag | first | slugify -%}
+        {%- assign _icon = fa-tags -%}
+        <il><a href="#{{- _slug -}}" class='scrolly' style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)";>
+             <span class="icon fa-tags"> &nbsp;&nbsp; {{- _title -}} &nbsp;&nbsp; </span></a>
+        </il>       
+        <hr>       
+    {%- endfor -%}
+    </ul>
+  </nav>
