@@ -1,21 +1,32 @@
 ---
 layout: default
 ---
+<!-- extract content TOC -->
+
+<!-- {% include toc.html html=content sanitize=true class="inline_toc" id="my_toc" h_min=2 h_max=5 %} -->
 
 {%- assign _posts = page.header-link -%}
 {%- include header.html scrolly_nav=_posts -%}
 
 <!-- Main -->
-<div id="main">
+<div id="main" class="post">
 	<!-- Post -->
 	<article class="shade-five">
 	  <div class="container">
 			<header>
-				<h2> <span class="icon {{ page.icon }}"></span></i> &nbsp; {{- page.title -}}</h2>
+				<h2>{{- page.title -}}</h2>
+				<div class="portfolio-post-header">
+					<br>
+					{% if page.project-description %} <a href="{{- page.project-description -}}"> <span class="icon fa-box"></span> &nbsp; Project Description</a> {% endif %}
+					<br>
+					{% if page.blog-post %} <a href="{{- page.blog-post -}}"> <span class="icon fa-pencil-alt"></span> &nbsp; Blog Post</a> {% endif %}
+					<br>
+					{% if page.github %} <a href="{{- page.github -}}"> <span class="icon-b fa-github"></span> &nbsp; GitHub</a> {% endif %}
+				</div>
 				<p>{% if page.author %}{{ page.author }}, {% endif %}{{- page.date | date_to_long_string -}}</p>
 			</header>
 	    {{- content -}}
 	  </div>
 	</article>
-	<a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+	<a href="{{- post.url | relative_url -}}" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
 </div>

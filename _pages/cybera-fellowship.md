@@ -2,14 +2,16 @@
 title: Cybera Fellowship
 categories:
   - Portfolio
-layout: post
+layout: portfolio-post
 permalink: /portfolio/data-science/cybera-fellowship/
 hide: true
+project-description: https://www.cybera.ca/ds-fellowship-profiles/#2021HockeyAI
+blog-post: /blog/cybera-fellowship/
 ---
 
-[<span class="icon fa-box"></span> &nbsp; Project Description](https://www.cybera.ca/ds-fellowship-profiles/#2021HockeyAI)
-<br>
-[<span class="icon fa-pencil-alt"></span> &nbsp; Blog Post](/blog/cybera-fellowship/)
+<div class="post-header">
+</div>
+
 
 ### Technologies
 - Docker

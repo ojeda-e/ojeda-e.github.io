@@ -2,12 +2,11 @@
 title: Voronoi maps
 categories:
   - Portfolio
-layout: post
+layout: portfolio-post
 permalink: /portfolio/data-visualization/voronoi-maps/
 hide: true
+github: https://github.com/ojeda-e/OpenDataCalgary/
 ---
-
-[<span class="icon-b fa-github"></span> &nbsp; GitHub](https://github.com/ojeda-e/OpenDataCalgary/blob/master/voroni_maps_public_libraries/map_YYClibraries.ipynb)
 
 ### Technologies
 - SciPy / Pandas / Smopy / Jupyter
