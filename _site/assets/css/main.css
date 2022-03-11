@@ -1215,7 +1215,7 @@ input, textarea, select {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
-  color: #272727;
+  color: #979797;
   line-height: 1.5em;
   font-size: 1.5em; }
 
@@ -1246,7 +1246,7 @@ strong, b {
 
 i {
   font-style: italic;
-  color: #fff; }
+  }
 
 em {
   font-style: bold;
@@ -1351,7 +1351,7 @@ section, article {
   .image.avatar48 {
     width: 48px;
     height: 48px;
-    background: #f00; }
+    background: #888; }
     .image.avatar48 img {
       width: 48px;
       height: 48px; }
@@ -1749,6 +1749,15 @@ button,
     #main > article img {
       max-width: 100%;
       height: auto; }
+    #main > article .portfolio-post-header a {
+      justify-content: left;
+      color: #c8c7c7;
+      text-decoration: none;
+      border-bottom-style: none;
+      font-size: 15pt; }
+      #main > article .portfolio-post-header a:hover {
+        color: #9e9737;
+        font-size: inherit; }
   @media screen {
     #main .taxonomy__index {
       grid-template-columns: repeat(3, 1fr); } }
