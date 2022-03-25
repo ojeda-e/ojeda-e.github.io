@@ -939,6 +939,11 @@
 				.container {
 					color: rgb(82, 82, 82);
 				}
+
+				/* Because the white color is too light on this shade */
+				i {
+					color: inherit;
+				}
 			}
 
 			&.shade-three {
