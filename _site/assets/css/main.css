@@ -1246,7 +1246,7 @@ strong, b {
 
 i {
   font-style: italic;
-  }
+  color: #fff; }
 
 em {
   font-style: bold;
@@ -1877,9 +1877,12 @@ button,
     #main > section.shade-one, #main article.shade-one {
       background-color: #81918E; }
     #main > section.shade-two, #main article.shade-two {
-      background-color: #f5fafa; }
+      background-color: #f5fafa;
+      /* Because the white color is too light on this shade */ }
       #main > section.shade-two .container, #main article.shade-two .container {
         color: #525252; }
+      #main > section.shade-two i, #main article.shade-two i {
+        color: inherit; }
     #main > section.shade-three, #main article.shade-three {
       background-color: #ecf1f1; }
       #main > section.shade-three .container, #main article.shade-three .container {
@@ -2096,6 +2099,11 @@ button,
     -webkit-transform: translateX(275px);
     -ms-transform: translateX(275px);
     transform: translateX(275px); }
+  body.header-visible #header {
+    -moz-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0); }
 
   /* Footer */
   #footer {
