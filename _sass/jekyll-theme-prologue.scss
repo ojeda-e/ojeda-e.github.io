@@ -1269,9 +1269,9 @@
 						@include vendor('transform', 'translateX(#{_size(header)})');
 					}
 
-					// #header {
-					// 	@include vendor('transform', 'translateX(0)');
-					// }
+					#header {
+						@include vendor('transform', 'translateX(0)');
+					}
 				}
 			}
 
