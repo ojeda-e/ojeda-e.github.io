@@ -140,7 +140,7 @@ will behave as `-fit rotxy+transxy` from _Gromacs_.
 
 A snippet that includes these two transformations looks like:
 
-```Python3
+{% highlight python %}
 import MDAnalysis as mda
 from MDAnalysis import transformations
 from membrane_curvature.base import MembraneCurvature
@@ -156,7 +156,7 @@ workflow_fit = (transformations.center_in_box(protein, center='mass'),
 
 u.trajectory.add_transformations(*workflow_fit)
 
-```
+{% endhighlight %}
 
 [This blog post](https://www.mdanalysis.org/2020/03/09/on-the-fly-transformations/)
 has more on-the-fly transformations examples to check out!

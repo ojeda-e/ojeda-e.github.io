@@ -103,7 +103,7 @@ For our reward function, we considered the following ranking for league levels:
 
 I proposed to calculate an exponential reward when transitioning to an upper league, with a penalty if the league is in the bottom of the list, among the possible leagues in that level. The ranking of the leagues by level goes according to the ordered lists:
 
-```python3
+{% highlight python %}
 ordered_professional = ['NHL', 'AHL', 'ECHL', 'SPHL']
 
 ordered_college = ['NCAA', 'NCAA III', 'ACHA', 'ACHA II', 
@@ -119,7 +119,7 @@ ordered_u_16_18 = ['T1EHL 18U', 'AEHL U18', 'QM18AAA',
 
 ordered_u_15_prep = ['USHS-Prep', 'AEHL U15',  'CSSHL U15', 
                      'ALLIANCE U15', 'BC U15', 'NOHL U15']
-```
+{% endhighlight %}
 
 ### Next steps
 - To continue building the engine <br>

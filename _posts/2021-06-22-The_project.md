@@ -70,7 +70,7 @@ The membrane curvature tool is expected to be part of the [MDAnalysis]
 analysis package in future versions. A sample of how it is
 expected to work in the future looks like this
 
-```
+{% highlight python %}
 import MDAnalysis as mda
 from MDAnalysis.analysis.curvature import Curvature
 
@@ -85,7 +85,7 @@ curvature = Curvature(surface).run()
 
 mean = curvature.mean_curvature()
 gaussian = curvature.gaussian_curvature()
-```
+{% endhighlight %}
 
 - What are the limitations to calculate membrane curvature? 
 

@@ -65,15 +65,15 @@ meaningful names. A good rule of thumb is:
 -   Avoid single letter names. Exceptions can be made based on the readers of
     your code when iterables are involved, but in general try to assign the best name to variables.
 
-    ```
+    {% highlight python %}
     a = [15, 30, 45]        # single letter ❌
 
     angles = [15, 30, 45]   # descriptive ✅ 
-    ```
+    {% endhighlight %}
 
 -   Because python is untyped, specify the type of variable in the name if possible.
 
-    ```
+    {% highlight python %}
     is_in_list = True                 # Boolean Variable
 
     angle_list = [15, 30, 35]         # List
@@ -81,15 +81,15 @@ meaningful names. A good rule of thumb is:
     dict_lipid_types = {'POPC': 15, 
                         'POPE': 10, 
                         'CHOL':5 }    # Dictionary
-    ```
+    {% endhighlight %}
 
 -   Prefer list comprehensions over explicit lists when you can create a list from an iterable.
 
-```
+{% highlight python %}
 angle_list = [15, 30, 45, 60, 75, 90]    # explicit list  ❌
 
 angle_list = [i*15 for i in range(1,7)]  # list comprehension  ✅ 
-```
+{% endhighlight %}
 
 - Concise variable names can make code easier and more effective to read.
 
@@ -101,15 +101,14 @@ atoms by lipid type or by atom name. An effective way to ierate over items of
 `dict_lipids_ecoli` would be
 
 
-```
+{% highlight python %}
 dict_lipids_ecoli = {'PE': 34, 
                      'PG': 33, 
                      'CL': 33 }   
 
 for lipid_type, number in dict_lipids_ecoli.items():
     print(lipid_type, number)
-
-```
+{% endhighlight %}
 
 
 ## Functions 
@@ -124,13 +123,13 @@ side effects and keep it focused on one single task.
 {: .notice} 
 {: style="text-align: center;"}
 
-```
+{% highlight python %}
 function_name(param_1, ..., param_10)    # too many! ❌
 
 function_name(param_1, ..., param_5)     # a lot, but better ⚠️
 
 function_name(param_1, param_2, param_3) # best ✅ 
-```
+{% endhighlight %}
 
 
 
@@ -142,7 +141,7 @@ PEP8 provides guidelines on how to write code in Python. For example:
 
 Here an example of how select atoms using the [MDAnalysis] package following PEP8 guidelines
 
-```
+{% highlight python %}
 import MDAnalysis as mda
 from MDAnalysis.tests.datafiles import PSF, DCD
 
@@ -154,7 +153,7 @@ no_protein_backbone_by_residue = u.select_atoms("resname ALA or resname GLY and 
 # Same selection but using a 70-character long  -->  ✅ good
 protein_resids_noBB =  u.select_atoms("resname ALA GLY and not \
                                      (backbone or name CB)").residues
-```
+{% endhighlight %}
 
 
 You can find more examples on code layout using PEP8 in [here]. For options to

@@ -179,7 +179,7 @@
 		border-radius: 4px;
 		font-family: "Courier New", monospace;
 		font-size: 0.9em;
-		padding: 0.25em 0.325em;
+		padding: 0.35em 0.325em;
 	}
 
 	pre {
@@ -187,11 +187,11 @@
 		font-family: "Courier New", monospace;
 		font-size: 0.9em;
 		tab-size: 4;
-		margin: 0 0 2em 0;
+		margin: 0 0 1.3em 0;
 		code {
 			display: block;
 			line-height: 1.5;
-			padding: 0.75em 1em;
+			padding: 1em 1em;
 			overflow-x: auto;
 		}
 	}
@@ -203,8 +203,13 @@
 		font-style: italic;
 	}
 
-	p, ul, ol, dl, table {
+	p, ul, ol, dl {
 		margin-bottom: 2em;
+	}
+
+	table {
+		margin-bottom: 0;
+		margin-top: 0;
 	}
 
 	dl {
