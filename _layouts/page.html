@@ -10,8 +10,10 @@ layout: default
 	  <div class="container">
 			<header>
 			<h2 id={{- page.title|slugify -}}> {{- page.title -}}</h2>
+			<p>{% if page.author %}{{ page.author }}, {% endif %}{{- page.date | date_to_long_string -}}</p>
 			</header>
 	    {{- content -}}
 	  </div>
 	</article>
+	<a href="{{- post.url | relative_url -}}" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
 </div>
