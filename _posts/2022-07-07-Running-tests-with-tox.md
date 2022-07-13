@@ -12,35 +12,40 @@ permalink: /blog/automating-tests-with-tox/
 A glimpse into `tox`, a versatile open-source tool that can be used to automate
 tests while minimizing mismatch between local and CI runs.
 
-I came across [tox] after starting my recent position at Cyclica as a
+<div style="text-align: center;">
+  <img src="/assets/images/intro_tox.png" alt="intro-tox" width="1000"/>
+</div>
+
+I came across [tox] after starting my position at [Cyclica] as a
 computational scientist. As part of our software development practices, we use
 `tox` to automate Python tests in our Machine Learning (ML) pipelines. I was
-surprised with how easy it is to get started with `tox`, and with the diverse
+surprised by how easy it is to get started with `tox`, and with the diverse
 features `tox` offers. In this blog post, I would like to provide an overview
 of this neat tool: [why we should use it](#why-tox), [how it
-works](#what-is-tox-and-how-does-it-work), how easy it is to [install],
-[configure](#configuration) and [run], while highlighting some of the neatest [features] I have
+works](#what-is-tox-and-how-does-it-work), and how easy it is to [install],
+[configure](#configuration) and [run] while highlighting some of the [features] I have
 identified so far. 
 
- Although `tox` is very versitile and it can be used for
-[multiple purposes](https://github.com/tox-dev/tox#tox-can-be-used-for-), I will
-focus on `tox` as a too to automate tests.
+Please note that although `tox` is a very versatile package and can be used for
+[multiple purposes](https://github.com/tox-dev/tox#tox-can-be-used-for-), in this blog post I will
+focus on `tox` as a tool to automate tests.
 
 ## Why `tox`?
-As a software developer, for me running tests was always a task
-exclusively performed by [pytest], where tests are run locally and after they
-successfully pass, changes are pushed to the remote repository where the
-Continuous Integration (CI) environment runs the tests again. Several times, despite my
-tests passing locally, they were failing in the CI. For example,
+As a software developer, for me running tests was always a task exclusively
+performed by [pytest], where I first run tests locally, and once they
+successfully pass, changes are pushed to the remote repository. After pushing
+changes to the remote branch, the Continuous Integration (CI) environment runs
+tests again. During this process, I found that despite my tests passing
+locally, they were failing in the CI. For example,
 
-* I have a `localenv` with a specific version of Python where my test pass
+* I have a `localenv` with a specific version of Python, where my tests pass
 locally. Assume that I have Python 3.8. The CI runs a matrix of Python versions,
 and the CI fails because my code is not compatible with Python 3.10. 
 
 * We are usually limited to one Operating System (OS) on our workstation or we
 work in the absence of virtual machines. However, the CI runs tests across different OS
 and fails in those we can’t test locally. In my case, I have a laptop with
-MacOS and a desktop with Linux. More often that I would have liked, CI was
+MacOS and a desktop with Linux. More often than I would have liked, CI was
 failing when running tests on Windows. 
 
 * There is an environment variable that needs to be set and we
@@ -57,14 +62,14 @@ Tox is an open-source project that provides a convenient way to run commands in
 isolated environments.
 
 As mentioned before, my focus here is on `tox` as a tool to create isolated
-environments to run tests, then we can get the same behaviour both locally and
+environments to run tests, then we can get the same behavior both locally and
 in the CI.
 
 ### Under the hood
 What tox does in the background can be roughly split into four main steps:
 
-1. Creates virtual environment.
-2. Installs dependencies in virtual environment. 
+1. Creates a virtual environment.
+2. Installs dependencies in the virtual environment. 
 3. Runs commands.
 4. Returns output (for each environment created).
 
@@ -89,7 +94,7 @@ There are three approaches to configure `tox`. The first one is by adding a
 `tox.ini` file in the root of the project. The second one is by adding a
 `tool.tox` section in the `pyproject.toml` configuration file. The third one is
 by adding a `setup.cfg` file. The first one is my preferred way because it is
-nicely condensed in a single file and the design of `tox` makes this config file
+nicely condensed into a single file and the design of `tox` makes this config file
 very easy to read.
 
 A minimal example that illustrates how to configure a `tox.ini` file to create
@@ -105,12 +110,12 @@ deps = pytest                      # test suite
 commands = pytest my_tests.py
 {% endhighlight %}
 
-Configuration of tox in an [INI] file structure is makes it very easy. Each
+Configuration of tox is made via an [INI] file, which makes it very easy. Each
 executable block can be identified by square brackets. The first part is what we
 called global settings, which are contained in the first section called `[tox]`.
 In the example provided above, there is only one item in the global settings,
 `envlist`, which tells tox which environments to create when we run `tox` from
-the command line (Step 1). In this case we run Python 3.6 and Python 3.7. The
+the command line (Step 1). In this case, we run Python 3.6 and Python 3.7. The
 second section, `[testenv]`, tells `tox` what dependencies to install in our
 environments. This is specified in the `deps` variable. Here we are telling tox
 to install [pytest] (Step 2). Then, with the environments we created and the
@@ -176,17 +181,17 @@ There are several attributes that make tox an interesting package to automate
 tests.
 
 * Good user experience: <br>
-As mentioned before, tox was design to be very easy to
-install, configure and use. The syntax is clear, not redundant and intuitive.
+As mentioned before, tox was designed to be very easy to
+install, configure and use. The syntax is clear, not redundant, and intuitive.
 
 * Compatibility:<br>
 `tox` allows to automate test runs across different OS,
 Unix-based and Windows, and different versions of Python, from 2.7 (!) to 3.10.
-Tox is also very useful to tests against different dependency versions.
+Tox is also very useful to test against different dependency versions.
 
 * Condensed reports: <br>
 After each run, `tox` offers a summary output with clear messages. Errors are easy to 
-spot and if the runs is successful, it will print a `congratulations :)` message.
+spot and if the run is successful, it will print a `congratulations :)` message.
 
 * CI Integration: <br>
 The [official tox documentation](https://tox.wiki/en/latest/index.html) offers
