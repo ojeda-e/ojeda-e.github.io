@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<!-- extract content TOC -->
+
+<!-- {% include toc.html html=content sanitize=true class="inline_toc" id="my_toc" h_min=2 h_max=5 %} -->
+
+{%- assign _posts = page.header-link -%}
+{%- include header.html scrolly_nav=_posts -%}
+
+<!-- Main -->
+<div id="main" class="post">
+	<!-- Post -->
+	<article class="shade-five">
+	  <div class="container">
+			<header>
+				<h2> {{- page.title -}}</h2>
+                <p>{% if page.author %}{{ page.author }}, {% endif %}{{- page.date | date_to_long_string -}}</p>
+			</header>
+	    {{- content -}}
+	  </div>
+	</article>
+	<a href="{{- post.url | relative_url -}}" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+</div>
