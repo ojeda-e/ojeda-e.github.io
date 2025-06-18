@@ -3,7 +3,7 @@ title:  "Simple is better"
 categories: 
     - Blog 
 tags: 
-    - Best practices 
+    - Best Practices 
     - PEP8 
     - Python
 layout: post
