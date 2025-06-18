@@ -5,6 +5,7 @@ categories:
 tags:
     - Best Practices
     - Python
+    - Cyclica
 layout: page
 permalink: /blog/automating-tests-with-tox/
 ---
