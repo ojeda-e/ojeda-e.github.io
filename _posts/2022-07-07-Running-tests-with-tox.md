@@ -3,7 +3,6 @@ title:  "Automating tests with tox"
 categories:
     - Blog
 tags:
-    - Best Practices
     - Python
     - Cyclica
 layout: page

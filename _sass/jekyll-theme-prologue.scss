@@ -462,7 +462,7 @@
 		@include vendor('transition', 'background-color 0.35s ease-in-out');
 		// to change the color of the icon add i
 		&:hover {
-			background-color: #e2cfd3;
+			background-color: #638c81;
 		}
 
 		&:active {
@@ -643,7 +643,7 @@
 						color: #fff;
 
 						span::before {
-							color: #e27689;
+							color: #638c81;
 						}
 					}
 				}
@@ -691,7 +691,7 @@
 							color: rgb(171, 171, 171);
 	
 							span::before {
-								color: #e27689;
+								color: #e8efed;
 							}
 						}
 					}

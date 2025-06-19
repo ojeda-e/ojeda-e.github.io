@@ -1,14 +1,19 @@
-
+<!-- Nav Tags -->
 <nav id="nav_tags">
-    <ul>
+  <ul>
     {%- for _tag in site.tags -%}
-        {%- assign _title = _tag | first -%}
-        {%- assign _slug = _tag | first | slugify -%}
-        {%- assign _icon = fa-tags -%}
-        <il><a href="#{{- _slug -}}" class='scrolly' style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)";>
-             <span class="icon fa-tags"> &nbsp;&nbsp; {{- _title -}} &nbsp;&nbsp; </span></a>
-        </il>       
-        <hr>       
+      {%- assign _title = _tag | first -%}
+      {%- assign _slug = _tag | first | slugify -%}
+      {%- assign _count = _tag | last | size -%}
+      <li>
+        <a href="#{{- _slug -}}" class="scrolly">
+          <span class="tag-content">
+            <span class="tag-count">[{{ _count }}]</span>
+            <span class="tag-name">{{- _title -}}</span>
+            <span class="icon fa-tag"></span>
+        </span>
+        </a>
+      </li>
     {%- endfor -%}
-    </ul>
-  </nav>
+  </ul>
+</nav>

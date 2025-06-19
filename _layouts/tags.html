@@ -38,24 +38,23 @@ layout: archive
 
 <!-- Tags index  -->
 <center>
-  <h1> <i class="fa fa-tags"></i> Posts by Tag</h1>
+  <h1> <i class="fa fa-tags"></i> Posts by Tag </h1>
 </center>
 <br>
-<center>
-<ul class="taxonomy__index">
+<div class="tags-grid">
   {% for i in (1..tags_max) reversed %}
     {% for tag in site.tags %}
       {% if tag[1].size == i %}
-        <li>
-          <a href="#{{ tag[0] | slugify }}"> 
-          {{ tag[0] }} <span class="taxonomy__count">&nbsp; [{{ i }}]</span>
+        <div class="tag-box">
+          <a href="#{{ tag[0] | slugify }}">
+            <i class="fa fa-tag"></i> <span class="tag-name">{{ tag[0] }}</span>
+            <span class="tag-count">[{{ i }}]</span>
           </a>
-        </li>
+        </div>
       {% endif %}
     {% endfor %}
   {% endfor %}
-</ul>  
-</center>
+</div>
 
 
 <!-- Entries list -->

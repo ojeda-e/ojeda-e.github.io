@@ -4,8 +4,6 @@ categories:
     - Blog
 tags:
     - Curvature
-    - Biological Membranes
-    - Lipid Bilayers
 layout: post
 ---
 
