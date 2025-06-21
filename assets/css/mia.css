@@ -232,3 +232,18 @@
     justify-content: center;
     align-items: center;
 }
+
+
+
+/* Reduce vertical space in blog section */
+.archive__item p {
+    margin-bottom: 0.1em;
+}
+
+#main .archive {
+    max-width: none;
+    margin-left: 5em;
+    margin-right: 5em;
+    padding-left: 0em;
+    padding-right: 0em;
+}

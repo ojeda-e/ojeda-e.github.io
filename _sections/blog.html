@@ -1,24 +1,29 @@
 ---
-title: "Blog"
 icon: fa-pencil-alt
-layout: default
 order: 2
 ---
 
+{% for post in site.posts limit:3 %}
+  <!-- <article class="archive__item"> -->
+    <h5 class="archive__item-title">
+      <a href="{{ post.url | relative_url }}" rel="permalink">{{ post.title }}</a>
+    </h5>
+    {% if post.date %}
+      <p class="page__meta" style="font-size: 0.7em; color: #888;">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %B %Y" }}</time>
+      </p>
+    {% endif %}
+    <p>
+    <!-- {% if post.excerpt %}
+      <span style="font-size: 0.8em;">{{ post.excerpt | markdownify | strip_html | truncatewords: 30 }}</span>
+      <a href="{{ post.url | relative_url }}" rel="permalink">read more</a>
+    {% endif %} -->
+    </p>
+  <!-- </article> -->
+{% endfor %}
 
 <footer>
-    <a href="/blog/dochunt/" class="button"><i class="fa fa-crow"></i> The latest</a>
+  <a href="/archive" class="button"><i class="fa fa-pencil-alt"></i>   Check more posts</a>
 </footer>
-
-<footer>
-    <a href="/tags/" class="button"><i class="fa fa-tags"></i> By Tags</a>
-    
-</footer>
-
-<footer>
-  <a href="/archive/" class="button"><i class="fa fa-cloud"></i>  Archive</a>
-</footer>
-
-
 
 

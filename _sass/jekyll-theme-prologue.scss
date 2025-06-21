@@ -1,7 +1,7 @@
+@charset "UTF-8";
 @import 'libs/vars';
 @import 'libs/functions';
 @import 'libs/mixins';
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,600");
 
 /*
@@ -845,6 +845,7 @@
 				  color: #af698e; 
 			  }
 		.archive__item-title {
+				font-size: 0.9em;
 				line-height: initial;
 				overflow: hidden;
 				text-overflow: ellipsis;
