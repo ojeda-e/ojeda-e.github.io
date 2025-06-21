@@ -247,3 +247,8 @@
     padding-left: 0em;
     padding-right: 0em;
 }
+
+/* Contact links section */
+#contact a {
+  white-space: nowrap;
+}
