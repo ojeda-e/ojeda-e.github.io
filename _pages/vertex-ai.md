@@ -6,13 +6,12 @@ layout: portfolio-post
 permalink: /portfolio/ml-engineering/vertex-ai/
 hide: true
 project-description: https://cloud.google.com/vertex-ai
-blog-post: /blog/vertex-ai-pitfalls/
+blog-post: /blog/vertex-ai/
 github: 
 ---
 
 ### Technologies
 - <code>aiplatform</code> Google Python SDK 
-- Sphinx Documentation
 - Codefresh Pipelines
 - GitHub Actions
 - FastAPI
