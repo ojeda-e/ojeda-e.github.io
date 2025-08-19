@@ -338,7 +338,22 @@
   }
 }
 
-/* Fix contact section icon colors - ensure all Font Awesome icons are dark gray */
+/* Font Awesome icons - default to dark gray */
+.fa, .fab, .fas, .far {
+  color: #555555 !important;
+}
+
+/* Icons inside ANY button element should be white */
+button .fa, button .fab, button .fas, button .far,
+input[type="button"] .fa, input[type="button"] .fab, input[type="button"] .fas, input[type="button"] .far,
+input[type="submit"] .fa, input[type="submit"] .fab, input[type="submit"] .fas, input[type="submit"] .far,
+.btn .fa, .btn .fab, .btn .fas, .btn .far,
+.button .fa, .button .fab, .button .fas, .button .far,
+.quote-button .fa, .quote-button .fab, .quote-button .fas, .quote-button .far {
+  color: white !important;
+}
+
+/* Contact section links and icons - ensure they stay dark gray */
 #main header a i.fa,
 #main header a i.fab {
   color: #555555 !important;
@@ -350,9 +365,4 @@
 
 #main header a:hover {
   color: #739f78 !important;
-}
-
-/* Also target any other Font Awesome icons that might be appearing white */
-.fa, .fab, .fas, .far {
-  color: #555555 !important;
 }
