@@ -1,0 +1,179 @@
+---
+title: Stoic Wisdom
+icon: fa-quote-left
+order: 5
+---
+
+<div class="stoic-quotes-section">
+  <div class="quote-container">
+    <blockquote id="quote-display" class="quote-text">
+      "The happiness of your life depends upon the quality of your thoughts."
+    </blockquote>
+    <cite id="quote-book" class="quote-book"> Meditations, </cite> <br>
+    <cite id="quote-author" class="quote-author"> — Marcus Aurelius</cite>
+  </div>
+  
+  <button id="new-quote-btn" class="quote-button">
+    ✨ New Quote ✨
+  </button>
+</div>
+
+<script>
+const quotes = [
+  "The soul becomes dyed with the color of its thoughts. V.16",
+  "The happiness of your life depends upon the quality of your thoughts. V.16",
+  "Receive without pride, let go without attachment. VIII.33",
+  "The art of living is more like wrestling than dancing. VII.61",
+  "To love only what happens, what was destined. No greater harmony. VII.57",
+  "There is no nature which is inferior to art; for the arts imitate the natures of things. XI.10"
+];
+
+let currentQuoteIndex = 0;
+
+function getRandomQuote() {
+  let newIndex;
+  do {
+    newIndex = Math.floor(Math.random() * quotes.length);
+  } while (newIndex === currentQuoteIndex && quotes.length > 1);
+  
+  currentQuoteIndex = newIndex;
+  return quotes[newIndex];
+}
+
+function updateQuote() {
+  const quoteDisplay = document.getElementById('quote-display');
+  const quoteBook = document.getElementById('quote-book');
+  const newQuote = getRandomQuote();
+  
+  // Extract chapter/line reference if it exists
+  const chapterMatch = newQuote.match(/[IVX]+\.\d+$/);
+  let bookText = "Meditations";
+  
+  if (chapterMatch) {
+    bookText += ` ${chapterMatch[0]}`;
+  }
+  
+  // Add fade out effect
+  quoteDisplay.style.opacity = '0';
+  quoteBook.style.opacity = '0';
+  
+  setTimeout(() => {
+    quoteDisplay.textContent = `"${newQuote.replace(/[IVX]+\.\d+$/, '')}"`;
+    quoteBook.textContent = bookText;
+    quoteDisplay.style.opacity = '1';
+    quoteBook.style.opacity = '1';
+  }, 200);
+}
+
+// Add event listener when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  const button = document.getElementById('new-quote-btn');
+  if (button) {
+    button.addEventListener('click', updateQuote);
+  }
+});
+
+// Also handle the case where the script runs before DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('new-quote-btn');
+    if (button) {
+      button.addEventListener('click', updateQuote);
+    }
+  });
+} else {
+  const button = document.getElementById('new-quote-btn');
+  if (button) {
+    button.addEventListener('click', updateQuote);
+  }
+}
+</script>
+
+<style>
+.stoic-quotes-section {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.quote-container {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.quote-text {
+  font-size: 1.4rem;
+  font-style: italic;
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+  color: #333333;
+  transition: opacity 0.2s ease-in-out;
+  border: none;
+  padding: 0;
+  quotes: none;
+}
+
+.quote-text::before,
+.quote-text::after {
+  content: none;
+}
+
+.quote-author {
+  font-size: 1.1rem;
+  color: #555555;
+  font-weight: 300;
+}
+
+.quote-button {
+  background: #789490;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(120, 148, 144, 0.3);
+}
+
+.quote-button:hover {
+  background: #6a8581;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(120, 148, 144, 0.4);
+}
+
+.quote-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(120, 148, 144, 0.3);
+}
+
+.quote-button i {
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .quote-text {
+    font-size: 1.2rem;
+  }
+  
+  .quote-container {
+    padding: 1.5rem;
+    margin: 0 1rem 2rem 1rem;
+  }
+}
+
+/* Fix contact section icon colors */
+#main header a i.fa,
+#main header a i.fab {
+  color: #555555 !important;
+}
+
+#main header a {
+  color: #555555 !important;
+}
+
+#main header a:hover {
+  color: #739f78 !important;
+}
+</style>
