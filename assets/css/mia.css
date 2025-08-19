@@ -357,6 +357,7 @@ input[type="submit"] .fa, input[type="submit"] .fab, input[type="submit"] .fas, 
 #main header a i.fa,
 #main header a i.fab {
   color: #555555 !important;
+  transition: color 0.3s ease;
 }
 
 #main header a {
@@ -364,5 +365,37 @@ input[type="submit"] .fa, input[type="submit"] .fab, input[type="submit"] .fas, 
 }
 
 #main header a:hover {
+  color: #739f78 !important;
+}
+
+/* Post layout header styling */
+/*  This is to keep the links (icon+links) in high contrast with the background */
+#main.post article.shade-five header p {
+  color: #cccccc !important;
+}
+
+/* Post layout icons - target icons within the post article */
+#main.post article.shade-five .fa,
+#main.post article.shade-five .fab,
+#main.post article.shade-five .fas,
+#main.post article.shade-five .far {
+  color: #cccccc !important;
+  transition: color 0.3s ease;
+}
+
+#main.post article.shade-five .fa:hover,
+#main.post article.shade-five .fab:hover,
+#main.post article.shade-five .fas:hover,
+#main.post article.shade-five .far:hover {
+  color: #739f78 !important;
+}
+
+/* Post layout links */
+#main.post article.shade-five a {
+  color: #cccccc !important;
+  transition: color 0.3s ease;
+}
+
+#main.post article.shade-five a:hover {
   color: #739f78 !important;
 }
