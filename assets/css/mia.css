@@ -327,6 +327,17 @@
   margin-right: 8px;
 }
 
+/* Ensure links with quote-button class behave exactly like buttons */
+a.quote-button {
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.quote-button:hover {
+  text-decoration: none;
+  color: white;
+}
+
 @media (max-width: 768px) {
   .quote-text {
     font-size: 1.2rem;
@@ -398,4 +409,297 @@ input[type="submit"] .fa, input[type="submit"] .fab, input[type="submit"] .fas, 
 
 #main.post article.shade-five a:hover {
   color: #739f78 !important;
+}
+
+/* --- French Grammar Exercises Section --- */
+.french-main-section {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.exercise-content {
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+/* Hide page titles for French exercise pages */
+.french-exercises-layout .page__title,
+.french-exercises-layout header h1,
+.french-exercises-layout .page-title,
+.french-exercises-layout h1.page__title {
+  display: none !important;
+}
+
+.grammar-topics {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.grammar-topic-btn {
+  background: #e8f4f8;
+  color: #34534a;
+  border: 2px solid #789490;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(120, 148, 144, 0.2);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.grammar-topic-btn:hover {
+  background: #d1e7f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(120, 148, 144, 0.3);
+  text-decoration: none;
+  color: #34534a;
+}
+
+.grammar-topic-btn i {
+  margin-right: 8px;
+}
+
+.exercise-content {
+  min-height: 400px;
+}
+
+.intro-text {
+  text-align: center;
+  margin-top: 2rem;
+  color: #555555;
+  line-height: 1.6;
+}
+
+.intro-text p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.cta-section {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.french-exercises-section h3 {
+  color: #34534a;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.exercise-header h4 {
+  color: #555555;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.exercise-button {
+  background: #789490;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.exercise-button:hover {
+  background: #6a8581;
+  transform: translateY(-2px);
+}
+
+.exercise-button i {
+  margin-right: 8px;
+}
+
+.sentence-container {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.sentence-text {
+  font-size: 1.3rem;
+  color: #34534a;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.answer-section {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.answer-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 16px;
+  border: 2px solid #e3ddda;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.answer-input:focus {
+  outline: none;
+  border-color: #789490;
+  box-shadow: 0 0 0 3px rgba(120, 148, 144, 0.1);
+}
+
+.check-button, .show-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.check-button {
+  background: #739f78;
+  color: white;
+}
+
+.check-button:hover {
+  background: #6a8f6f;
+  transform: translateY(-1px);
+}
+
+.show-button {
+  background: #6c757d;
+  color: white;
+}
+
+.show-button:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.feedback {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.feedback.correct {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.feedback.incorrect {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+.feedback.show-answer {
+  background: #e2e3e5;
+  border: 1px solid #d6d8db;
+  color: #383d41;
+}
+
+.correct-answer, .incorrect-answer, .show-answer {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.explanation {
+  font-style: italic;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+.hint-section {
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.hint-section h5 {
+  color: #34534a;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.hint-section ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.hint-section li {
+  color: #555555;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.hint-section strong {
+  color: #34534a;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .french-exercises-section {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .grammar-topics {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .grammar-topic-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .exercise-header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .answer-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .answer-input {
+    min-width: auto;
+  }
+  
+  .sentence-text {
+    font-size: 1.1rem;
+  }
 }
