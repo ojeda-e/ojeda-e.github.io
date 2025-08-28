@@ -34,6 +34,37 @@
         {%- endif -%}
       {%- endfor -%}
     {%- endunless -%}
+    
+    {%- comment -%}<!-- Show French exercise pages only when in French section -->{%- endcomment -%}
+    {%- if page.url contains '/francais-avec-mia/' or page.url contains '/etudie-le-francais-avec-mia/' -%}
+      {%- if site.exercises -%}
+        {%- assign _french_pages = site.exercises | where_exp: "page", "page.hide != true" | sort: 'order' -%}
+        {%- unless _french_pages == null -%}
+          {%- for _page in _french_pages -%}
+            {%- assign _title = _page.title | default: _page.layout -%}
+            {%- assign _slug = _title | slugify -%}
+            {%- assign _icon = _page.icon | default: 'fa-graduation-cap' -%}
+            {%- if _page.icon-style == 'regular' -%}
+              {%- assign _class = 'icon-r' -%}
+            {%- elsif _page.icon-style == 'brands' -%}
+              {%- assign _class = 'icon-b' -%}
+            {%- else -%}
+              {%- assign _class = 'icon' -%}
+            {%- endif -%}
+            {%- if _page.url == page.url -%}
+              <li><a href="#" id="{{- _slug -}}" class="active">
+                <span class="{{ _class }} {{ _icon }}">{{- _title -}}</span>
+              </a></li>
+            {%- elsif _page.url -%}
+              <li><a href="{{- _page.url | absolute_url -}}" id="{{- _slug -}}-link">
+                <span class="{{ _class }} {{ _icon }}">{{- _title -}}</span>
+              </a></li>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endif -%}
+    
     {%- assign _sections = include.section_items | where_exp: "section", "section.hide != true" -%}
     {%- if _pages[0] and _sections[0] -%}<hr>{%- endif -%}
     {%- unless _sections == null -%}

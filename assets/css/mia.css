@@ -419,8 +419,31 @@ input[type="submit"] .fa, input[type="submit"] .fab, input[type="submit"] .fas, 
 }
 
 .exercise-content {
-  padding: 2rem;
-  margin: 2rem 0;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+/* More aggressive override with higher specificity */
+div.exercise-content {
+  padding: 0.1rem !important;
+  margin: 0.1rem 0 !important;
+}
+
+/* Target the specific exercise-content in the French exercises layout */
+.container .exercise-content {
+  padding: 0.1rem !important;
+  margin: 0.1rem 0 !important;
+}
+
+/* Override the min-height rule that might be causing issues */
+.exercise-content {
+  min-height: auto !important;
+}
+
+/* Target the content area (grammar tips) more aggressively */
+.container > article > div > div:last-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 /* Hide page titles for French exercise pages */
@@ -534,14 +557,14 @@ input[type="submit"] .fa, input[type="submit"] .fab, input[type="submit"] .fas, 
 }
 
 .sentence-container {
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 
 .sentence-text {
   font-size: 1.3rem;
   color: #34534a;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.1rem;
   text-align: center;
   font-weight: 500;
   line-height: 1.6;

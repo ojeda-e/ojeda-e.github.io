@@ -9,6 +9,29 @@ layout: default
 	<!-- Page -->
 	<article class="shade-two">
 	  <div class="container">
+	    <!-- Extract and display headers separately -->
+	    <div class="page-headers">
+	      <h1>{{ page.title }} - Interactive Exercises</h1>
+	      <p>Complete the sentence with the correct form of the verb in {{ page.title | downcase }}.</p>
+	    </div>
+	    
+	    <!-- Exercise interface below the headers -->
+	    <div class="exercise-content">
+	      <div class="sentence-container">
+	        <div id="sentence-display" class="sentence-text"></div>
+	        <div class="answer-section">
+	          <input type="text" id="answer-input" placeholder="Type your answer here..." class="answer-input">
+	          <button id="check-answer-btn" class="check-button">Check Answer</button>
+	          <button id="show-answer-btn" class="show-button">Show Answer</button>
+	        </div>
+	        <div id="feedback" class="feedback"></div>
+	        <button id="new-exercise-btn" class="exercise-button">
+	          <i class="fa fa-forward"></i> New Exercise
+	        </button>
+	      </div>
+	    </div>
+	    
+	    <!-- Content (Grammar Tips) below the exercise -->
 	    {{- content -}}
 	  </div>
 	</article>
@@ -16,156 +39,148 @@ layout: default
 </div>
 
 <script>
-// French grammar exercise data - will be populated by the section
-const exercises = {{ site.data.french-exercises[page.topic_key].exercises | jsonify }};
-
-let currentExerciseIndex = 0;
-
-function getRandomExercise() {
-  let newIndex;
-  do {
-    newIndex = Math.floor(Math.random() * exercises.length);
-  } while (newIndex === currentExerciseIndex && exercises.length > 1);
-  
-  currentExerciseIndex = newIndex;
-  return exercises[newIndex];
-}
-
-function updateExercise() {
-  const sentenceDisplay = document.getElementById('sentence-display');
-  const answerInput = document.getElementById('answer-input');
-  const feedback = document.getElementById('feedback');
-  
-  const newExercise = getRandomExercise();
-  
-  // Clear previous feedback and input
-  feedback.innerHTML = '';
-  answerInput.value = '';
-  
-  // Update sentence display
-  sentenceDisplay.innerHTML = newExercise.sentence;
-  
-  // Store current exercise data
-  sentenceDisplay.dataset.answer = newExercise.answer;
-  sentenceDisplay.dataset.explanation = newExercise.explanation;
-}
-
-function checkAnswer() {
-  const answerInput = document.getElementById('answer-input');
-  const feedback = document.getElementById('feedback');
-  const sentenceDisplay = document.getElementById('sentence-display');
-  
-  const userAnswer = answerInput.value.trim().toLowerCase();
-  const correctAnswer = sentenceDisplay.dataset.answer.toLowerCase();
-  const explanation = sentenceDisplay.dataset.explanation;
-  
-  if (userAnswer === correctAnswer) {
-    feedback.innerHTML = '<div class="correct-answer">✅ Correct! Excellent work!</div>';
-    feedback.className = 'feedback correct';
-  } else {
-    feedback.innerHTML = `<div class="incorrect-answer">❌ Not quite right. The correct answer is: <strong>${correctAnswer}</strong></div><div class="explanation">${explanation}</div>`;
-    feedback.className = 'feedback incorrect';
+// French grammar exercise system - handles all exercise logic
+class FrenchExerciseSystem {
+  constructor() {
+    this.currentExerciseIndex = 0;
+    this.exercises = [];
+    this.init();
   }
-}
 
-function showAnswer() {
-  const feedback = document.getElementById('feedback');
-  const sentenceDisplay = document.getElementById('sentence-display');
-  
-  const correctAnswer = sentenceDisplay.dataset.answer;
-  const explanation = sentenceDisplay.dataset.explanation;
-  
-  feedback.innerHTML = `<div class="show-answer">Answer: <strong>${correctAnswer}</strong></div><div class="explanation">${explanation}</div>`;
-  feedback.className = 'feedback show-answer';
-}
+  init() {
+    // Get exercise data from Jekyll data, not by fetching
+    this.loadExerciseData();
+    this.setupEventListeners();
+  }
 
-// Event listeners
-document.addEventListener('DOMContentLoaded', function() {
-  const newExerciseBtn = document.getElementById('new-exercise-btn');
-  const checkAnswerBtn = document.getElementById('check-answer-btn');
-  const showAnswerBtn = document.getElementById('show-answer-btn');
-  const answerInput = document.getElementById('answer-input');
-  
-  if (newExerciseBtn) {
-    newExerciseBtn.addEventListener('click', updateExercise);
-  }
-  
-  if (checkAnswerBtn) {
-    checkAnswerBtn.addEventListener('click', checkAnswer);
-  }
-  
-  if (showAnswerBtn) {
-    showAnswerBtn.addEventListener('click', showAnswer);
-  }
-  
-  if (answerInput) {
-    answerInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        checkAnswer();
+  loadExerciseData() {
+    try {
+      // Determine which exercise data to use based on the page URL
+      const currentPath = window.location.pathname;
+      let exerciseData = [];
+      
+      if (currentPath.includes('passe-compose')) {
+        exerciseData = {{ site.data.exercises.passe-compose | jsonify }};
+      } else if (currentPath.includes('imparfait')) {
+        exerciseData = {{ site.data.exercises.imparfait | jsonify }};
+      } else if (currentPath.includes('futur-proche')) {
+        exerciseData = {{ site.data.exercises.futur-proche | jsonify }};
+      } else {
+        // Default to passe-compose if no match
+        exerciseData = {{ site.data.exercises.passe-compose | jsonify }};
       }
-    });
+      
+      if (exerciseData && exerciseData.length > 0) {
+        this.exercises = exerciseData;
+        console.log('Loaded exercises:', this.exercises.length);
+        this.updateExercise();
+      } else {
+        console.error('No exercise data found');
+        document.getElementById('sentence-display').innerHTML = 'Error: No exercise data available.';
+      }
+    } catch (error) {
+      console.error('Error loading exercise data:', error);
+      document.getElementById('sentence-display').innerHTML = 'Error: Could not load exercise data.';
+    }
   }
-  
-  // Initialize with first exercise
-  updateExercise();
-});
 
-// Handle case where script runs before DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() {
+  setupEventListeners() {
     const newExerciseBtn = document.getElementById('new-exercise-btn');
     const checkAnswerBtn = document.getElementById('check-answer-btn');
     const showAnswerBtn = document.getElementById('show-answer-btn');
     const answerInput = document.getElementById('answer-input');
     
     if (newExerciseBtn) {
-      newExerciseBtn.addEventListener('click', updateExercise);
+      newExerciseBtn.addEventListener('click', () => this.updateExercise());
     }
     
     if (checkAnswerBtn) {
-      checkAnswerBtn.addEventListener('click', checkAnswer);
+      checkAnswerBtn.addEventListener('click', () => this.checkAnswer());
     }
     
     if (showAnswerBtn) {
-      showAnswerBtn.addEventListener('click', showAnswer);
+      showAnswerBtn.addEventListener('click', () => this.showAnswer());
     }
     
     if (answerInput) {
-      answerInput.addEventListener('keypress', function(e) {
+      answerInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-          checkAnswer();
+          this.checkAnswer();
         }
       });
     }
+  }
+
+  getRandomExercise() {
+    if (this.exercises.length === 0) return null;
     
-    updateExercise();
-  });
-} else {
-  const newExerciseBtn = document.getElementById('new-exercise-btn');
-  const checkAnswerBtn = document.getElementById('check-answer-btn');
-  const showAnswerBtn = document.getElementById('show-answer-btn');
-  const answerInput = document.getElementById('answer-input');
-  
-  if (newExerciseBtn) {
-    newExerciseBtn.addEventListener('click', updateExercise);
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * this.exercises.length);
+    } while (newIndex === this.currentExerciseIndex && this.exercises.length > 1);
+    
+    this.currentExerciseIndex = newIndex;
+    return this.exercises[newIndex];
   }
-  
-  if (checkAnswerBtn) {
-    checkAnswerBtn.addEventListener('click', checkAnswer);
+
+  updateExercise() {
+    const sentenceDisplay = document.getElementById('sentence-display');
+    const answerInput = document.getElementById('answer-input');
+    const feedback = document.getElementById('feedback');
+    
+    if (!sentenceDisplay || !answerInput || !feedback) return;
+    
+    const newExercise = this.getRandomExercise();
+    if (!newExercise) return;
+    
+    // Clear previous feedback and input
+    feedback.innerHTML = '';
+    answerInput.value = '';
+    
+    // Update sentence display
+    sentenceDisplay.innerHTML = newExercise.sentence;
+    
+    // Store current exercise data
+    sentenceDisplay.dataset.answer = newExercise.answer;
+    sentenceDisplay.dataset.explanation = newExercise.explanation;
   }
-  
-  if (showAnswerBtn) {
-    showAnswerBtn.addEventListener('click', showAnswer);
+
+  checkAnswer() {
+    const answerInput = document.getElementById('answer-input');
+    const feedback = document.getElementById('feedback');
+    const sentenceDisplay = document.getElementById('sentence-display');
+    
+    if (!answerInput || !feedback || !sentenceDisplay) return;
+    
+    const userAnswer = answerInput.value.trim().toLowerCase();
+    const correctAnswer = sentenceDisplay.dataset.answer.toLowerCase();
+    const explanation = sentenceDisplay.dataset.explanation;
+    
+    if (userAnswer === correctAnswer) {
+      feedback.innerHTML = '<div class="correct-answer">✅ Correct! Excellent work!</div>';
+      feedback.className = 'feedback correct';
+    } else {
+      feedback.innerHTML = `<div class="incorrect-answer">❌ Not quite right. The correct answer is: <strong>${correctAnswer}</strong></div><div class="explanation">${explanation}</div>`;
+      feedback.className = 'feedback incorrect';
+    }
   }
-  
-  if (answerInput) {
-    answerInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        checkAnswer();
-      }
-    });
+
+  showAnswer() {
+    const feedback = document.getElementById('feedback');
+    const sentenceDisplay = document.getElementById('sentence-display');
+    
+    if (!feedback || !sentenceDisplay) return;
+    
+    const correctAnswer = sentenceDisplay.dataset.answer;
+    const explanation = sentenceDisplay.dataset.explanation;
+    
+    feedback.innerHTML = `<div class="show-answer">Answer: <strong>${correctAnswer}</strong></div><div class="explanation">${explanation}</div>`;
+    feedback.className = 'feedback show-answer';
   }
-  
-  updateExercise();
 }
+
+// Initialize the exercise system when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  new FrenchExerciseSystem();
+});
 </script>
