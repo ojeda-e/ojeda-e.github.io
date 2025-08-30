@@ -1,0 +1,52 @@
+[
+  {
+    "sentence": "Je ………………… (partir) en vacances demain.",
+    "answer": "vais partir",
+    "explanation": "Futur proche: aller (conjugated) + infinitive → je vais partir"
+  },
+  {
+    "sentence": "Nous ………………… (manger) au restaurant ce soir.",
+    "answer": "allons manger",
+    "explanation": "Futur proche: aller (conjugated) + infinitive → nous allons manger"
+  },
+  {
+    "sentence": "Tu ………………… (faire) tes devoirs après le dîner.",
+    "answer": "vas faire",
+    "explanation": "Futur proche: aller (conjugated) + infinitive → tu vas faire"
+  },
+  {
+    "sentence": "Elle ………………… (venir) nous rendre visite.",
+    "answer": "va venir",
+    "explanation": "Futur proche: aller (conjugated) + infinitive → elle va venir"
+  },
+  {
+    "sentence": "Ils ………………… (arriver) dans une heure.",
+    "answer": "vont arriver",
+    "explanation": "Futur proche: aller (conjugated) + infinitive → ils vont arriver"
+  },
+  {
+    "sentence": "Vous ………………… (prendre) le train à 8h00.",
+    "answer": "allez prendre",
+    "explanation": "Futur proche: aller (conjugated) + infinitive → vous allez prendre"
+  },
+  {
+    "sentence": "Mon frère ………………… (étudier) la médecine.",
+    "answer": "va étudier",
+    "explanation": "Futur proche: aller (conjugated) + infinitive → il va étudier"
+  },
+  {
+    "sentence": "Les enfants ………………… (jouer) dans le jardin.",
+    "answer": "vont jouer",
+    "explanation": "Futur proche: aller (conjugated) + infinitive → ils vont jouer"
+  },
+  {
+    "sentence": "Je ………………… (apprendre) le français cette année.",
+    "answer": "vais apprendre",
+    "explanation": "Futur proche: aller (conjugated) + infinitive → je vais apprendre"
+  },
+  {
+    "sentence": "Nous ………………… (visiter) Paris le mois prochain.",
+    "answer": "allons visiter",
+    "explanation": "Futur proche: aller (conjugated) + infinitive → nous allons visiter"
+  }
+]
