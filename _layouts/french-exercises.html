@@ -4,11 +4,15 @@ layout: default
 
 {%- include header.html -%}
 
-<!-- Main -->
 <div id="main" class="page">
 	<!-- Page -->
 	<article class="shade-two">
 	  <div class="container">
+	    <!-- Exercise data for JavaScript -->
+	    <script type="application/json" id="exercise-data-futur-proche">{{ site.data.exercises.futur-proche | jsonify }}</script>
+	    <script type="application/json" id="exercise-data-imparfait">{{ site.data.exercises.imparfait | jsonify }}</script>
+	    <script type="application/json" id="exercise-data-passe-compose">{{ site.data.exercises.passe-compose | jsonify }}</script>
+	    
 	    <!-- Extract and display headers separately -->
 	    <div class="page-headers">
 	      <h1>{{ page.title }} - Interactive Exercises</h1>
@@ -59,15 +63,15 @@ class FrenchExerciseSystem {
       const currentPath = window.location.pathname;
       let exerciseData = [];
       
-      if (currentPath.includes('passe-compose')) {
-        exerciseData = {{ site.data.exercises.passe-compose | jsonify }};
+      if (currentPath.includes('futur-proche')) {
+        exerciseData = JSON.parse(document.getElementById('exercise-data-futur-proche').textContent);
       } else if (currentPath.includes('imparfait')) {
-        exerciseData = {{ site.data.exercises.imparfait | jsonify }};
-      } else if (currentPath.includes('futur-proche')) {
-        exerciseData = {{ site.data.exercises.futur-proche | jsonify }};
+        exerciseData = JSON.parse(document.getElementById('exercise-data-imparfait').textContent);
+      } else if (currentPath.includes('passe-compose')) {
+        exerciseData = JSON.parse(document.getElementById('exercise-data-passe-compose').textContent);
       } else {
         // Default to passe-compose if no match
-        exerciseData = {{ site.data.exercises.passe-compose | jsonify }};
+        exerciseData = JSON.parse(document.getElementById('exercise-data-passe-compose').textContent);
       }
       
       if (exerciseData && exerciseData.length > 0) {
