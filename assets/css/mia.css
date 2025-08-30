@@ -766,7 +766,7 @@ table tfoot {
 .french-exercises table,
 table {
   width: auto !important;
-  max-width: 80% !important;
+  max-width: 50% !important;
   margin: 1em auto !important;
   border-collapse: collapse !important;
   background: white !important;
@@ -792,18 +792,19 @@ table td {
   padding: 10px 20px !important;
   text-align: center !important;
   border-bottom: 1px solid #e3ddda !important;
+  background: white !important;
 }
 
 .french-exercises-section table tr:nth-child(even),
 .french-exercises table tr:nth-child(even),
 table tr:nth-child(even) {
-  background: #f8f8f8 !important;
+  background: white !important;
 }
 
 .french-exercises-section table tr:hover,
 .french-exercises table tr:hover,
 table tr:hover {
-  background: #f0f0f0 !important;
+  background: #f8f8f8 !important;
 }
 
 /* Override thead and tfoot styles */
