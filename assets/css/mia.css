@@ -61,61 +61,313 @@
 .highlight .vi { color: #a0a0f0 } /* Name.Variable.Instance */
 .highlight .il { color: #ffffff; font-weight: bold } /* Literal.Number.Integer.Long */
 
-/* --- Custom code block theme using your palette (with dark green accent) --- */
-.highlight, pre, code {
-  background: #f4f4f4 !important;
-  color: #34534a !important;
-  border-radius: 6px;
-  font-size: 1em;
-  font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
-  line-height: 1.5;
-  padding: 0.5em 1em;
-  overflow-x: auto;
-  border: 1px solid #e3ddda;
+/* --- Custom code block theme using earthy, muted palette --- */
+/* Jekyll Rouge structure: .highlighter-rouge > .highlight > pre.highlight > code */
+
+/* Outer container - no styling needed */
+.highlighter-rouge {
+  margin: 0.3em 0;
 }
 
-/* Comments */
-.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #b8b1ad;
+/* Inner highlight container - remove borders and padding */
+.highlighter-rouge .highlight {
+  background: #f7f6f3 !important;  /* Cream/off-white background */
+  border-radius: 6px;
+  border: 1px solid #d4d1c7;       /* Single border on outer container */
+  margin: 0;
+  padding: 0;
+}
+
+/* Pre element - remove borders, keep padding */
+.highlighter-rouge pre.highlight {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0;
+  padding: 0.2em 0.6em !important;
+  margin: 0 !important;
+  font-size: 0.7em;
+  font-family:  monospace;
+  line-height: 1.4;
+  overflow-x: auto;
+}
+
+/* Code element - inherit styling from pre */
+.highlighter-rouge code {
+  background: transparent !important;
+  border: none !important;
+  color: #4a5d5a !important;       /* Muted sage green text */
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+/* Fallback for other code blocks */
+pre, code {
+  background: #f7f6f3 !important;
+  color: #4a5d5a !important;
+  border-radius: 6px;
+  font-size: 0.8em;
+  font-family: inherit;  /* Use body font instead of monospace */
+  line-height: 1.4;
+  padding: 0.3em 0.8em;
+  overflow-x: auto;
+  border: 1px solid #d4d1c7;
+  margin: 0.5em 0;
+}
+
+/* Inline code should be more compact and use monospace */
+code:not(pre code) {
+  padding: 0.1em 0.3em !important;
+  font-size: 0.75em !important;
+  font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace !important;  /* Keep monospace for inline code */
+  line-height: 1.2 !important;
+}
+
+/* Optimize code block spacing in blog posts */
+#main.post .highlighter-rouge {
+  margin: 0.2em 0 !important;
+}
+
+#main.post .highlighter-rouge .highlight {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#main.post .highlighter-rouge pre.highlight {
+  padding: 0.2em 0.6em !important;
+  margin: 0 !important;
+}
+
+/* Handle pre > code blocks (manual syntax highlighting) */
+#main.post pre code,
+pre code {
+  background: #f7f6f3 !important;
+  color: #4a5d5a !important;
+  border-radius: 6px;
+  font-size: 0.8em;
+  font-family: inherit;  /* Use body font */
+  line-height: 1.4;
+  padding: 0.2em 0.6em;
+  display: block;
+  overflow-x: auto;
+  border: 1px solid #d4d1c7;
+  margin: 0.2em 0;
+}
+
+/* Handle code blocks inside details elements */
+details pre code,
+details code {
+  background: #f7f6f3 !important;
+  color: #4a5d5a !important;
+  border-radius: 6px;
+  font-size: 0.8em;
+  font-family: inherit;  /* Use body font */
+  line-height: 1.4;
+  padding: 0.2em 0.6em;
+  display: block;
+  overflow-x: auto;
+  border: 1px solid #d4d1c7;
+  margin: 0.2em 0;
+}
+
+/* Ensure details containers don't interfere with code styling */
+details pre {
+  margin: 0.2em 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Ensure pre containers don't add extra spacing */
+#main.post pre,
+pre {
+  margin: 0.2em 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Basic syntax highlighting for pre > code blocks */
+pre code .keyword,
+pre code .k {  /* Keywords */
+  color: #3c4a5c !important;
+  font-weight: bold;
+}
+
+pre code .string,
+pre code .s {  /* Strings */
+  color: #6b7b8a !important;
+}
+
+pre code .comment,
+pre code .c {  /* Comments */
+  color: #8a9a8a !important;
   font-style: italic;
 }
 
-/* Keywords, functions, types, accent */
+pre code .number,
+pre code .m {  /* Numbers */
+  color: #5a6b7a !important;
+}
+
+pre code .function,
+pre code .nf {  /* Functions */
+  color: #3c4a5c !important;
+  font-weight: bold;
+}
+
+pre code .class,
+pre code .nc {  /* Classes */
+  color: #3c4a5c !important;
+  font-weight: bold;
+}
+
+/* Enhanced styling for details code blocks to make them more visually distinct */
+details pre code,
+details code {
+  position: relative;
+}
+
+/* Add a subtle background pattern to distinguish details code blocks */
+details pre code::before,
+details code::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(60, 74, 92, 0.02) 50%, transparent 100%);
+  pointer-events: none;
+  border-radius: 6px;
+}
+
+/* Make details code blocks slightly more prominent */
+details pre code {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Add a subtle left border to details code blocks */
+details pre {
+  border-left: 3px solid #d4d1c7;
+  padding-left: 0.5em;
+}
+
+/* JavaScript-based syntax highlighting classes for details code blocks */
+details pre code .syntax-keyword {
+  color: #3c4a5c !important;
+  font-weight: bold;
+}
+
+details pre code .syntax-string {
+  color: #6b7b8a !important;
+}
+
+details pre code .syntax-comment {
+  color: #8a9a8a !important;
+  font-style: italic;
+}
+
+details pre code .syntax-number {
+  color: #5a6b7a !important;
+}
+
+details pre code .syntax-function {
+  color: #3c4a5c !important;
+  font-weight: bold;
+}
+
+details pre code .syntax-operator {
+  color: #6b7b8a !important;
+  font-weight: bold;
+}
+
+/* Reduce spacing around code blocks */
+#main.post p + .highlight,
+#main.post p + pre.highlight {
+  margin-top: 0.1em !important;
+}
+
+#main.post .highlight + p,
+#main.post pre.highlight + p {
+  margin-top: 0.1em !important;
+}
+
+/* Comments - muted sage green */
+.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #8a9a8a;
+  font-style: italic;
+}
+
+/* Keywords, functions, types - deep slate */
 .highlight .k, .highlight .kd, .highlight .kp, .highlight .kr, .highlight .kt,
 .highlight .nf, .highlight .nc, .highlight .nt {
-  color: #34534a;
+  color: #3c4a5c;
   font-weight: bold;
 }
 
-/* Strings */
+/* Strings - blue-grey */
 .highlight .s, .highlight .s1, .highlight .s2 {
-  color: #76897c;
+  color: #6b7b8a;
 }
 
-/* Numbers */
+/* Numbers - muted blue-grey */
 .highlight .m, .highlight .mi, .highlight .mf {
-  color: #76897c;
+  color: #5a6b7a;
 }
 
-/* Preprocessor directives, HTML tags */
+/* Preprocessor directives, HTML tags - light sage */
 .highlight .cp, .highlight .nt {
-  color: #e3ddda;
+  color: #9aa89a;
 }
 
-/* Annotations, TODOs, etc. */
+/* Annotations, TODOs, etc. - muted sage */
 .highlight .nd, .highlight .na, .highlight .nb, .highlight .bp {
-  color: #b8b1ad;
+  color: #8a9a8a;
   font-weight: bold;
 }
 
-/* Parameters, doc tags */
+/* Parameters, doc tags - deep slate */
 .highlight .nn, .highlight .nv, .highlight .vc, .highlight .vg {
-  color: #34534a;
+  color: #3c4a5c;
 }
 
-/* Selection */
+/* Selection - muted sage */
 .highlight ::selection, pre ::selection, code ::selection {
-  background: #e3ddda;
+  background: #d4d1c7;
+}
+
+/* Additional syntax highlighting for the earthy palette */
+.highlight .o, .highlight .ow {  /* Operators */
+  color: #6b7b8a;
+  font-weight: bold;
+}
+
+.highlight .err {  /* Errors */
+  color: #8b5a5a;
+  background-color: #f5e6e6;
+}
+
+.highlight .gd {  /* Deleted */
+  color: #8b5a5a;
+  background-color: #f5e6e6;
+}
+
+.highlight .gi {  /* Inserted */
+  color: #5a8b5a;
+  background-color: #e6f5e6;
+}
+
+.highlight .gu {  /* Subheading */
+  color: #6b7b8a;
+  font-weight: bold;
+}
+
+.highlight .gt {  /* Traceback */
+  color: #3c4a5c;
 }
 
 /* Tag Grid Styles */
@@ -238,6 +490,99 @@
 /* Reduce vertical space in blog section */
 .archive__item p {
     margin-bottom: 0.1em;
+}
+
+/* Simple, clean spacing rules for blog posts */
+#main.post p {
+    margin-bottom: 0.1em;
+}
+
+#main.post p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Minimum space between paragraphs and lists - target both post and page layouts */
+#main.post article p + ul,
+#main.post article p + ol,
+#main.post .container p + ul,
+#main.post .container p + ol,
+#main.post p + ul,
+#main.post p + ol,
+#main.page article p + ul,
+#main.page article p + ol,
+#main.page .container p + ul,
+#main.page .container p + ol,
+#main.page p + ul,
+#main.page p + ol {
+    margin-top: -2em !important;
+}
+
+/* Nuclear option - target everything with maximum specificity */
+#main.post article .container p + ul,
+#main.post article .container p + ol,
+#main.page article .container p + ul,
+#main.page article .container p + ol {
+    margin-top: -1.5em !important;
+    margin-bottom: 0.5em !important;
+}
+
+/* Also try targeting the specific post content */
+#main.post .container ul,
+#main.post .container ol,
+#main.page .container ul,
+#main.page .container ol {
+    margin-top: -2em !important;
+}
+
+#main.post ul,
+#main.post ol {
+    margin-bottom: 1.5em;
+}
+
+/* Specific spacing for lists after headings in post layout */
+#main.post h1 + ul,
+#main.post h1 + ol,
+#main.post h2 + ul,
+#main.post h2 + ol,
+#main.post h3 + ul,
+#main.post h3 + ol,
+#main.post h4 + ul,
+#main.post h4 + ol {
+    margin-top: 1em !important;
+}
+
+/* Also target the page layout */
+#main.page h1 + ul,
+#main.page h1 + ol,
+#main.page h2 + ul,
+#main.page h2 + ol,
+#main.page h3 + ul,
+#main.page h3 + ol,
+#main.page h4 + ul,
+#main.page h4 + ol {
+    margin-top: 1em !important;
+}
+
+/* Ultra-specific override for headings followed by lists */
+#main.page article .container h2 + ul,
+#main.page article .container h2 + ol,
+#main.page article .container h3 + ul,
+#main.page article .container h3 + ol {
+    margin-top: 1.5em !important;
+}
+
+#main.post li {
+    margin-bottom: 1em;
+}
+
+/* Heading spacing */
+#main.post h1, #main.post h2, #main.post h3, #main.post h4, #main.post h5, #main.post h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+#main.post h1:first-child, #main.post h2:first-child, #main.post h3:first-child, #main.post h4:first-child, #main.post h5:first-child, #main.post h6:first-child {
+    margin-top: 0;
 }
 
 #main .archive {
@@ -501,7 +846,7 @@ div.exercise-content {
 }
 
 .intro-text p {
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
   font-size: 1.1rem;
 }
 
@@ -818,6 +1163,19 @@ table thead {
 .french-exercises table tfoot,
 table tfoot {
   background: #f8f8f8 !important;
+}
+
+/* Fix table spacing - add more space after tables */
+#main.post table {
+  margin-bottom: 1.5em !important;
+}
+
+#main.post p + table {
+  margin-top: 1em !important;
+}
+
+#main.post table + p {
+  margin-top: 1em !important;
 }
 
 /* responsive tables on small screens */
