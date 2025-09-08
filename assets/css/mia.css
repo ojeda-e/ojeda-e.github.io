@@ -127,7 +127,7 @@ code:not(pre code) {
 
 /* Optimize code block spacing in blog posts */
 #main.post .highlighter-rouge {
-  margin: 0.2em 0 !important;
+  margin: 0.2em 0 0.5em 0 !important;
 }
 
 #main.post .highlighter-rouge .highlight {
@@ -140,14 +140,14 @@ code:not(pre code) {
   margin: 0 !important;
 }
 
-/* Handle pre > code blocks (manual syntax highlighting) */
-#main.post pre code,
-pre code {
+/* === SIMPLIFIED CODE BLOCK STYLING === */
+/* All code blocks (pre > code, details code, etc.) */
+pre code, details pre code, details code {
   background: #f7f6f3 !important;
   color: #4a5d5a !important;
   border-radius: 6px;
   font-size: 0.8em;
-  font-family: inherit;  /* Use body font */
+  font-family: inherit;
   line-height: 1.4;
   padding: 0.2em 0.6em;
   display: block;
@@ -156,33 +156,8 @@ pre code {
   margin: 0.2em 0;
 }
 
-/* Handle code blocks inside details elements */
-details pre code,
-details code {
-  background: #f7f6f3 !important;
-  color: #4a5d5a !important;
-  border-radius: 6px;
-  font-size: 0.8em;
-  font-family: inherit;  /* Use body font */
-  line-height: 1.4;
-  padding: 0.2em 0.6em;
-  display: block;
-  overflow-x: auto;
-  border: 1px solid #d4d1c7;
-  margin: 0.2em 0;
-}
-
-/* Ensure details containers don't interfere with code styling */
-details pre {
-  margin: 0.2em 0 !important;
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-}
-
-/* Ensure pre containers don't add extra spacing */
-#main.post pre,
-pre {
+/* Pre containers - remove extra spacing */
+pre, details pre, #main.post pre {
   margin: 0.2em 0 !important;
   padding: 0 !important;
   background: transparent !important;
@@ -285,7 +260,9 @@ details pre code .syntax-operator {
   font-weight: bold;
 }
 
-/* Reduce spacing around code blocks */
+/* === SEPARATED CODE BLOCK SPACING === */
+
+/* Blog posts - tight spacing */
 #main.post p + .highlight,
 #main.post p + pre.highlight {
   margin-top: 0.1em !important;
@@ -294,6 +271,17 @@ details pre code .syntax-operator {
 #main.post .highlight + p,
 #main.post pre.highlight + p {
   margin-top: 0.1em !important;
+}
+
+/* Portfolio posts - generous spacing */
+#main.portfolio-post p + .highlight,
+#main.portfolio-post p + pre.highlight {
+  margin-top: 0.5em !important;
+}
+
+#main.portfolio-post .highlight + p,
+#main.portfolio-post pre.highlight + p {
+  margin-top: 0.5em !important;
 }
 
 /* Comments - muted sage green */
@@ -487,13 +475,10 @@ details pre code .syntax-operator {
 
 
 
-/* Reduce vertical space in blog section */
-.archive__item p {
-    margin-bottom: 0.1em;
-}
+/* === SIMPLIFIED SPACING RULES === */
 
-/* Simple, clean spacing rules for blog posts */
-#main.post p {
+/* Basic paragraph spacing */
+#main.post p, .archive__item p {
     margin-bottom: 0.1em;
 }
 
@@ -501,78 +486,59 @@ details pre code .syntax-operator {
     margin-bottom: 0;
 }
 
-/* Minimum space between paragraphs and lists - target both post and page layouts */
-#main.post article p + ul,
-#main.post article p + ol,
-#main.post .container p + ul,
-#main.post .container p + ol,
-#main.post p + ul,
-#main.post p + ol,
-#main.page article p + ul,
-#main.page article p + ol,
-#main.page .container p + ul,
-#main.page .container p + ol,
-#main.page p + ul,
-#main.page p + ol {
-    margin-top: -2em !important;
-}
-
-/* Nuclear option - target everything with maximum specificity */
-#main.post article .container p + ul,
-#main.post article .container p + ol,
-#main.page article .container p + ul,
-#main.page article .container p + ol {
-    margin-top: -1.5em !important;
-    margin-bottom: 0.5em !important;
-}
-
-/* Also try targeting the specific post content */
-#main.post .container ul,
-#main.post .container ol,
-#main.page .container ul,
-#main.page .container ol {
-    margin-top: -2em !important;
-}
-
-#main.post ul,
-#main.post ol {
+/* List spacing - regular posts and pages */
+#main.post ul, #main.post ol, #main.page ul, #main.page ol {
     margin-bottom: 1.5em;
 }
 
-/* Specific spacing for lists after headings in post layout */
-#main.post h1 + ul,
-#main.post h1 + ol,
-#main.post h2 + ul,
-#main.post h2 + ol,
-#main.post h3 + ul,
-#main.post h3 + ol,
-#main.post h4 + ul,
-#main.post h4 + ol {
+
+/* === SEPARATED SPACING RULES === */
+
+/* Between bullet points */
+#main.post li, #main.page li {
+    margin-bottom: 0.2em;
+}
+
+/* Blog posts - tighter spacing */
+/* Bullet points */
+#main.post p + ul, #main.post p + ol {
+    margin-top: 0.35em !important;
+    margin-bottom: -0.5em !important;
+}
+
+/* Headings */
+#main.post h1 + ul, #main.post h1 + ol, #main.post h2 + ul, #main.post h2 + ol,
+#main.post h3 + ul, #main.post h3 + ol, #main.post h4 + ul, #main.post h4 + ol {
+    margin-top: 0.8em !important;
+}
+
+/* Pages - moderate spacing */
+#main.page p + ul, #main.page p + ol {
+    margin-top: -1em !important;
+}
+
+#main.page h1 + ul, #main.page h1 + ol, #main.page h2 + ul, #main.page h2 + ol,
+#main.page h3 + ul, #main.page h3 + ol, #main.page h4 + ul, #main.page h4 + ol {
     margin-top: 1em !important;
 }
 
-/* Also target the page layout */
-#main.page h1 + ul,
-#main.page h1 + ol,
-#main.page h2 + ul,
-#main.page h2 + ol,
-#main.page h3 + ul,
-#main.page h3 + ol,
-#main.page h4 + ul,
-#main.page h4 + ol {
-    margin-top: 1em !important;
+/* === PORTFOLIO POST OVERRIDES === */
+/* Portfolio posts get more generous spacing */
+#main.portfolio-post p + ul, #main.portfolio-post p + ol {
+    margin-top: 0.5em !important;
 }
 
-/* Ultra-specific override for headings followed by lists */
-#main.page article .container h2 + ul,
-#main.page article .container h2 + ol,
-#main.page article .container h3 + ul,
-#main.page article .container h3 + ol {
+#main.portfolio-post h1 + ul, #main.portfolio-post h1 + ol,
+#main.portfolio-post h2 + ul, #main.portfolio-post h2 + ol,
+#main.portfolio-post h3 + ul, #main.portfolio-post h3 + ol,
+#main.portfolio-post h4 + ul, #main.portfolio-post h4 + ol {
     margin-top: 1.5em !important;
 }
 
-#main.post li {
-    margin-bottom: 1em;
+/* Tighter bullet point spacing for portfolio posts */
+#main.portfolio-post ul li, #main.portfolio-post ol li {
+    margin-bottom: 0.3em !important;
+    line-height: 1.3 !important;
 }
 
 /* Heading spacing */
@@ -763,26 +729,11 @@ input[type="submit"] .fa, input[type="submit"] .fab, input[type="submit"] .fas, 
   margin: 2rem 0;
 }
 
+/* === SIMPLIFIED FRENCH EXERCISES STYLING === */
 .exercise-content {
-  padding: 0.5rem;
-  margin: 0.5rem 0;
-}
-
-/* More aggressive override with higher specificity */
-div.exercise-content {
   padding: 0.1rem !important;
   margin: 0.1rem 0 !important;
-}
-
-/* Target the specific exercise-content in the French exercises layout */
-.container .exercise-content {
-  padding: 0.1rem !important;
-  margin: 0.1rem 0 !important;
-}
-
-/* Override the min-height rule that might be causing issues */
-.exercise-content {
-  min-height: auto !important;
+  min-height: 400px;
 }
 
 /* Target the content area (grammar tips) more aggressively */
@@ -834,9 +785,6 @@ div.exercise-content {
   margin-right: 8px;
 }
 
-.exercise-content {
-  min-height: 400px;
-}
 
 .intro-text {
   text-align: center;
@@ -1106,10 +1054,9 @@ table tfoot {
   background: #eee;
 }
 
-/* Now override with our custom styling */
-.french-exercises-section table,
-.french-exercises table,
-table {
+/* === SIMPLIFIED TABLE STYLING === */
+/* All tables get consistent styling */
+table, .french-exercises-section table, .french-exercises table {
   width: auto !important;
   max-width: 50% !important;
   margin: 1em auto !important;
@@ -1120,9 +1067,7 @@ table {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-.french-exercises-section table th,
-.french-exercises table th,
-table th {
+table th, .french-exercises-section table th, .french-exercises table th {
   background: #6a8581 !important;
   color: white !important;
   padding: 12px 20px !important;
@@ -1131,38 +1076,19 @@ table th {
   font-size: 0.95em !important;
 }
 
-.french-exercises-section table td,
-.french-exercises table td,
-table td {
+table td, .french-exercises-section table td, .french-exercises table td {
   padding: 10px 20px !important;
   text-align: center !important;
   border-bottom: 1px solid #e3ddda !important;
   background: white !important;
 }
 
-.french-exercises-section table tr:nth-child(even),
-.french-exercises table tr:nth-child(even),
-table tr:nth-child(even) {
-  background: white !important;
-}
-
-.french-exercises-section table tr:hover,
-.french-exercises table tr:hover,
-table tr:hover {
+table tr:hover, .french-exercises-section table tr:hover, .french-exercises table tr:hover {
   background: #f8f8f8 !important;
 }
 
-/* Override thead and tfoot styles */
-.french-exercises-section table thead,
-.french-exercises table thead,
-table thead {
+table thead, .french-exercises-section table thead, .french-exercises table thead {
   background: #6a8581 !important;
-}
-
-.french-exercises-section table tfoot,
-.french-exercises table tfoot,
-table tfoot {
-  background: #f8f8f8 !important;
 }
 
 /* Fix table spacing - add more space after tables */
