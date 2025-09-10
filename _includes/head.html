@@ -3,6 +3,22 @@
     {%- include google_analytics.html -%}
   {%- endif -%}
   
+  {%- if site.goatcounter_site and jekyll.environment == 'production' -%}
+    {%- include goatcounter.html -%}
+  {%- endif -%}
+  
+  {%- if site.yandex_metrica_id and jekyll.environment == 'production' -%}
+    {%- include yandex_metrica.html -%}
+  {%- endif -%}
+  
+  {%- if site.statcounter_project_id and jekyll.environment == 'production' -%}
+    {%- include statcounter.html -%}
+  {%- endif -%}
+  
+  {%- if site.ip_tracking and jekyll.environment == 'production' -%}
+    {%- include ip_tracking.html -%}
+  {%- endif -%}
+  
   <!-- Robots -->
   <meta name="robots" content="{{- page.robots | default: 'index, follow' -}}" />
   {%- unless page.canonical == false -%}<link rel="canonical" href="{{- page.url | absolute_url -}}" />{%- endunless -%}
