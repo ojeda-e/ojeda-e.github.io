@@ -186,7 +186,8 @@ F1 Score: 0.0714
 The confusion matrix shows that the model correctly identified 146 inactive compounds (true negatives) but only 2 active binders (true positives). The accuracy of 74% seems reasonable, but the recall of 7.4% indicates that the model missed most of the active binders.
 
 <div style="text-align: center;">
-  <img src="/assets/images/2025-09-09/confusion_matrix_rf.png " alt="confusion_matrix_rf" width="400"/>
+  <img src="/assets/images/2025-09-09/confusion_matrix_rf.png" alt="confusion_matrix_rf" width="400"/>
+<br>
 <i> Figure 2: Confusion matrix for the Random Forest model showing the severe imbalance in predictions.</i>
 </div>
 <br>
@@ -222,7 +223,8 @@ F1 Score: 0.0000
 The confusion matrix shows that the model correctly identified 173 inactive compounds (true negatives) but failed to identify any active binders (true positives). The accuracy of 86.5% is even higher, but the recall of 0% indicates that the model did not identify any active binders at all.
 
 <div style="text-align: center;">
-  <img src="/assets/images/2025-09-09/confusion_matrix_nn.png " alt="confusion_matrix_nn" width="400"/>
+  <img src="/assets/images/2025-09-09/confusion_matrix_nn.png" alt="confusion_matrix_nn" width="400"/>
+<br>
 <i> Figure 3: Confusion matrix for the Neural Network model. Despite high accuracy, it completely fails to identify active compounds.</i>
 </div>
 <br>
@@ -243,7 +245,7 @@ The table below summarizes the key metrics for both models:
 As we can see, both models achieve high accuracy, but their ability to identify active binders is severely limited. The Random Forest model performs slightly better than the Neural Network in terms of recall and precision, but both models struggle with the imbalanced data.
 
 <div style="text-align: center;">
-  <img src="/assets/images/2025-09-09/metrics_comparison.png " alt="metrics_comparison" width="800"/>
+  <img src="/assets/images/2025-09-09/metrics_comparison.png" alt="metrics_comparison" width="800"/>
 <br>
 <i> Figure 4: Side-by-side comparison of all metrics shows that both models struggle with the minority class despite high accuracy.</i>
 </div>
