@@ -3,7 +3,7 @@ layout: french-exercises
 title: Futur Proche
 permalink: /francais-avec-mia/futur-proche/
 icon: fa-rocket
-order: 2
+order: 3
 ---
 
 ## Grammar Tips

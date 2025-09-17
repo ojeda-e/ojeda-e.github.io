@@ -13,9 +13,9 @@ level: 2
     <a href="/francais-avec-mia/passe-compose/" class="grammar-topic-btn">
       <i class="fa fa-history"></i> Passé Composé
     </a>
-    <!-- <a href="/francais-avec-mia/imparfait/" class="grammar-topic-btn">
+    <a href="/francais-avec-mia/imparfait/" class="grammar-topic-btn">
       <i class="fa fa-hourglass-half"></i> L'imparfait
-    </a> -->
+    </a>
     <a href="/francais-avec-mia/futur-proche/" class="grammar-topic-btn">
       <i class="fa fa-rocket"></i> Futur Proche
     </a>

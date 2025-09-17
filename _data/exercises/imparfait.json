@@ -1,0 +1,53 @@
+[
+  {
+    "sentence": "Quand j'étais jeune, je ………………… (aller) souvent au parc.",
+    "answer": "allais",
+    "explanation": "Imparfait of 'aller' (je form): remove -er and add -ais → allais"
+  },
+  {
+    "sentence": "Nous ………………… (être) très contents hier soir.",
+    "answer": "étions",
+    "explanation": "Imparfait of 'être' (nous form): étions"
+  },
+  {
+    "sentence": "Tu ………………… (faire) tes devoirs tous les jours.",
+    "answer": "faisais",
+    "explanation": "Imparfait of 'faire' (tu form): remove -re and add -ais → faisais"
+  },
+  {
+    "sentence": "Les enfants ………………… (jouer) dans le jardin.",
+    "answer": "jouaient",
+    "explanation": "Imparfait of 'jouer' (ils form): remove -er and add -aient → jouaient"
+  },
+  {
+    "sentence": "Elle ………………… (avoir) toujours faim après l'école.",
+    "answer": "avait",
+    "explanation": "Imparfait of 'avoir' (elle form): avait"
+  },
+  {
+    "sentence": "Je ………………… (parler) français quand j'habitais à Paris.",
+    "answer": "parlais",
+    "explanation": "Imparfait of 'parler' (je form): remove -er and add -ais → parlais"
+  },
+  {
+    "sentence": "Vous ………………… (finir) toujours vos repas.",
+    "answer": "finissiez",
+    "explanation": "Imparfait of 'finir' (vous form): remove -ir and add -iez → finissiez"
+  },
+  {
+    "sentence": "Ils ………………… (venir) nous voir chaque week-end.",
+    "answer": "venaient",
+    "explanation": "Imparfait of 'venir' (ils form): remove -ir and add -aient → venaient"
+  },
+  {
+    "sentence": "Mon père ………………… (travailler) beaucoup.",
+    "answer": "travaillait",
+    "explanation": "Imparfait of 'travailler' (il form): remove -er and add -ait → travaillait"
+  },
+  {
+    "sentence": "Nous ………………… (étudier) ensemble à l'université.",
+    "answer": "étudiions",
+    "explanation": "Imparfait of 'étudier' (nous form): remove -er and add -ions → étudiions"
+  }
+]
+
