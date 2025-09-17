@@ -12,6 +12,7 @@ layout: default
 	    <script type="application/json" id="exercise-data-futur-proche">{{ site.data.exercises.futur-proche | jsonify }}</script>
 	    <script type="application/json" id="exercise-data-imparfait">{{ site.data.exercises.imparfait | jsonify }}</script>
 	    <script type="application/json" id="exercise-data-passe-compose">{{ site.data.exercises.passe-compose | jsonify }}</script>
+	    <script type="application/json" id="exercise-data-futur-simple">{{ site.data.exercises.future-simple | jsonify }}</script>
 	    
 	    <!-- Extract and display headers separately -->
 	    <div class="page-headers">
@@ -69,6 +70,8 @@ class FrenchExerciseSystem {
         exerciseData = JSON.parse(document.getElementById('exercise-data-imparfait').textContent);
       } else if (currentPath.includes('passe-compose')) {
         exerciseData = JSON.parse(document.getElementById('exercise-data-passe-compose').textContent);
+      } else if (currentPath.includes('futur-simple')) {
+        exerciseData = JSON.parse(document.getElementById('exercise-data-future-simple').textContent);
       } else {
         // Default to passe-compose if no match
         exerciseData = JSON.parse(document.getElementById('exercise-data-passe-compose').textContent);

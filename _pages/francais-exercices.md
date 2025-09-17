@@ -19,6 +19,9 @@ level: 2
     <a href="/francais-avec-mia/futur-proche/" class="grammar-topic-btn">
       <i class="fa fa-rocket"></i> Futur Proche
     </a>
+    <a href="/francais-avec-mia/futur-simple/" class="grammar-topic-btn">
+      <i class="fa fa-space-shuttle"></i> Futur Simple
+    </a>
   </div>
   
   <div class="intro-text">
