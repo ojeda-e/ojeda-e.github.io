@@ -5,7 +5,7 @@ categories:
 tags:
     - Curvature
 layout: post
-permalink: Considerations-curvature-MD-simulations-PartI
+permalink: /blog/Considerations-curvature-MD-simulations-PartI
 ---
 
 Some points to keep in mind to calculate membrane curvature from MD simulations.
