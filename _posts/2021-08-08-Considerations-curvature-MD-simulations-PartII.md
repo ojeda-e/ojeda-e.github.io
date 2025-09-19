@@ -5,6 +5,7 @@ categories:
 tags:
     - Curvature
 layout: post
+permalink: Considerations-curvature-MD-simulations-PartII
 ---
 
 Considerations to calculate membrane curvature from MD simulations with no position restraints.
