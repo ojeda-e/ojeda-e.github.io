@@ -1,0 +1,152 @@
+[
+    {
+      "sentence": "Je ………………… (aimer) visiter le Japon un jour.",
+      "answer": "aimerais",
+      "explanation": "aimer → aimer- + ais."
+    },
+    {
+      "sentence": "Tu ………………… (finir) plus tôt si tu travaillais vite.",
+      "answer": "finirais",
+      "explanation": "finir → finir- + ais."
+    },
+    {
+      "sentence": "Il ………………… (attendre) ses amis devant le cinéma.",
+      "answer": "attendrait",
+      "explanation": "attendre → attendr- + ait."
+    },
+    {
+      "sentence": "Nous ………………… (jouer) au tennis s’il faisait beau.",
+      "answer": "jouerions",
+      "explanation": "jouer → jouer- + ions."
+    },
+    {
+      "sentence": "Vous ………………… (choisir) ce plat si vous aviez faim.",
+      "answer": "choisiriez",
+      "explanation": "choisir → choisir- + iez."
+    },
+    {
+      "sentence": "Elles ………………… (vendre) leur maison si elles pouvaient.",
+      "answer": "vendraient",
+      "explanation": "vendre → vendr- + aient."
+    },
+    {
+      "sentence": "Je ………………… (aller) en Italie cet été si j’avais de l’argent.",
+      "answer": "irais",
+      "explanation": "aller (irr.) → ir- + ais."
+    },
+    {
+      "sentence": "Tu ………………… (venir) avec moi si tu avais le temps.",
+      "answer": "viendrais",
+      "explanation": "venir (irr.) → viendr- + ais."
+    },
+    {
+      "sentence": "Il ………………… (pouvoir) m’aider si nécessaire.",
+      "answer": "pourrait",
+      "explanation": "pouvoir (irr.) → pourr- + ait."
+    },
+    {
+      "sentence": "Nous ………………… (vouloir) apprendre une autre langue.",
+      "answer": "voudrions",
+      "explanation": "vouloir (irr.) → voudr- + ions."
+    },
+    {
+      "sentence": "Vous ………………… (savoir) la réponse si vous écoutiez bien.",
+      "answer": "sauriez",
+      "explanation": "savoir (irr.) → saur- + iez."
+    },
+    {
+      "sentence": "Elles ………………… (voir) leurs amis plus souvent si elles habitaient ici.",
+      "answer": "verraient",
+      "explanation": "voir (irr.) → verr- + aient."
+    },
+    {
+      "sentence": "Je ………………… (devoir) partir tôt demain matin.",
+      "answer": "devrais",
+      "explanation": "devoir (irr.) → devr- + ais."
+    },
+    {
+      "sentence": "Tu ………………… (envoyer) une carte postale si tu voyageais.",
+      "answer": "enverrais",
+      "explanation": "envoyer (irr.) → enverr- + ais."
+    },
+    {
+      "sentence": "Il ………………… (recevoir) un cadeau s’il travaillait bien.",
+      "answer": "recevrait",
+      "explanation": "recevoir (irr.) → recevr- + ait."
+    },
+    {
+      "sentence": "Nous ………………… (courir) au parc si nous avions le temps.",
+      "answer": "courrions",
+      "explanation": "courir (irr.) → courr- + ions."
+    },
+    {
+      "sentence": "Vous ………………… (tenir) votre promesse.",
+      "answer": "tiendriez",
+      "explanation": "tenir (irr.) → tiendr- + iez."
+    },
+    {
+      "sentence": "Elles ………………… (mourir) de rire en entendant cette blague.",
+      "answer": "mourraient",
+      "explanation": "mourir (irr.) → mourr- + aient."
+    },
+    {
+      "sentence": "Il ………………… (pleuvoir) beaucoup dans cette région.",
+      "answer": "pleuvrait",
+      "explanation": "pleuvoir (irr., impersonnel) → pleuvr- + ait."
+    },
+    {
+      "sentence": "Il ………………… (falloir) étudier davantage.",
+      "answer": "faudrait",
+      "explanation": "falloir (irr., impersonnel) → faudr- + ait."
+    },
+    {
+      "sentence": "Je ………………… (trouver) une solution si je pouvais.",
+      "answer": "trouverais",
+      "explanation": "trouver → trouver- + ais."
+    },
+    {
+      "sentence": "Tu ………………… (parler) avec elle si tu étais courageux.",
+      "answer": "parlerais",
+      "explanation": "parler → parler- + ais."
+    },
+    {
+      "sentence": "Il ………………… (rendre) les livres demain s’il pouvait.",
+      "answer": "rendrait",
+      "explanation": "rendre → rendr- + ait."
+    },
+    {
+      "sentence": "Nous ………………… (répondre) si nous connaissions la réponse.",
+      "answer": "répondrions",
+      "explanation": "répondre → répondr- + ions."
+    },
+    {
+      "sentence": "Vous ………………… (apprendre) vite si vous écoutiez bien.",
+      "answer": "apprendriez",
+      "explanation": "apprendre → apprendr- + iez."
+    },
+    {
+      "sentence": "Elles ………………… (conduire) avec prudence.",
+      "answer": "conduiraient",
+      "explanation": "conduire → conduir- + aient."
+    },
+    {
+      "sentence": "Je ………………… (mettre) la table si tu voulais.",
+      "answer": "mettrais",
+      "explanation": "mettre → mettr- + ais."
+    },
+    {
+      "sentence": "Tu ………………… (dire) la vérité à tes parents.",
+      "answer": "dirais",
+      "explanation": "dire → dir- + ais."
+    },
+    {
+      "sentence": "Il ………………… (ouvrir) la porte pour vous.",
+      "answer": "ouvrirait",
+      "explanation": "ouvrir → ouvrir- + ait."
+    },
+    {
+      "sentence": "Nous ………………… (dormir) plus longtemps le week-end.",
+      "answer": "dormirions",
+      "explanation": "dormir → dormir- + ions."
+    }
+  ]
