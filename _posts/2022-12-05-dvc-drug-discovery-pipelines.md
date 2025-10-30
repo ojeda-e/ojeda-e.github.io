@@ -110,6 +110,6 @@ These lessons extend beyond drug discovery: in any high-stakes ML domain, reprod
 
 ### ▶️ Watch the talk
 
-The full talk from PyData NYC 2022 [here](https://img.youtube.com/vi/FbIyKjOdiI8/0.jpg). After this talk was posted by PyData NYC, I was contacted by Iterative team (the company that created DVC) to share the talk on [LinkedIn](https://www.linkedin.com/posts/dvc-ai_drugdiscovery-biotechnology-ai-activity-7069265958988627968-1qv8?utm_source=share&utm_medium=member_desktop&rcm=ACoAABLO5xsBTFi9gR4AU0lEwkRw36K3vfswb6Y), and make it available on the [Iterative Youtube channel](https://youtu.be/XPawEJRGr9c).
+The full talk from PyData NYC 2022 [here](https://www.youtube.com/watch?v=FbIyKjOdiI8). After this talk was posted by PyData NYC, I was contacted by Iterative team (the company that created DVC) to share the talk on [LinkedIn](https://www.linkedin.com/posts/dvc-ai_drugdiscovery-biotechnology-ai-activity-7069265958988627968-1qv8?utm_source=share&utm_medium=member_desktop&rcm=ACoAABLO5xsBTFi9gR4AU0lEwkRw36K3vfswb6Y), and make it available on the [Iterative Youtube channel](https://youtu.be/XPawEJRGr9c).
 
 The slides are also available on [GitHub](https://github.com/ojeda-e/dvc-dd-pipelines).
