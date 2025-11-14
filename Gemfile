@@ -1,8 +1,7 @@
 source "https://rubygems.org"
-ruby "3.2.8"
+ruby "3.4.7"
 gemspec
 gem "kramdown-parser-gfm"
-gem "jekyll", "~> 4.4.1"
-
 gem "webrick", "~> 1.7"
-gem "bundler", "~> 2.6.9"
+gem "github-pages", group: :jekyll_plugins
+gem "bundler", "~> 2"
